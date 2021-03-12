@@ -1,12 +1,11 @@
 # Design Planning
 
-### Specs
-- Landing Page
+### Landing Page
   - Big search bar
   - Nice photo
   - Top nav (sign in, etc.)
 
-- Map Page
+### Map Page
   - Dark mode map
     - (Stretch) option to switch between light and dark mode
     - Could be for map only or entire page
@@ -26,7 +25,3 @@
     - Photo
     - Description
     - Like button
-
-### Tools
-- Component Library - Material UI?
-- Utility CSS Framework - Tailwind CSS?

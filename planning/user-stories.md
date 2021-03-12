@@ -1,7 +1,6 @@
 # User Stories
 
 ### Places
-
 - As any user, I can view a map around my location
   - Get location through browser, map API
 - As any user, I can see outdoor activity spots on the map
@@ -18,11 +17,9 @@
 - As a signed in user, I can view my faviorite pins alongside public ones
 
 ### Events (Stretch)
-
 - As any user, I can view events (tagged to locations)
 - As a signed in user, I can make an event (public only to start) + edit + delete
 
 ### Social (Stretch)
-
 - As a signed in user, I can RSVP someone's event (only visible until full)
 - As a signed in user, I can see what similar users like when I like a place 
