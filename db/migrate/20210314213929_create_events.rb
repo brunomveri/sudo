@@ -1,4 +1,4 @@
-class EventsTable < ActiveRecord::Migration[5.2]
+class CreateEvents < ActiveRecord::Migration[5.2]
   def change
     create_table :events, force: :cascade do |t|
       t.references :user, index: true, foreign_key: true

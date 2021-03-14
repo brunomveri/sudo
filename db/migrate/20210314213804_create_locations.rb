@@ -1,13 +1,5 @@
-class LocationsTable < ActiveRecord::Migration[5.2]
+class CreateLocations < ActiveRecord::Migration[5.2]
   def change
-    
-    create_table :activities, force: :cascade do |t|
-      t.string   :name
-      t.string   :icon
-      t.datetime :created_at, null: false
-      t.datetime :updated_at, null: false
-    end  
-
     create_table :locations, force: :cascade do |t|
       t.references :user, index: true, foreign_key: true
       t.references :activity, index: true, foreign_key: true
