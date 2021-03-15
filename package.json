@@ -1,5 +1,5 @@
 {
-  "name": "stigma",
+  "name": "sudo",
   "version": "1.0.0",
   "description": "A boilerplate project for anyone interested in making a project that uses React and Rails.",
   "main": "index.js",
@@ -17,13 +17,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NimaBoscarino/stigma.git"
+    "url": "git+hhttps://github.com/brunomveri/sudo.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NimaBoscarino/stigma/issues"
+    "url": "https://github.com/brunomveri/sudo/issues"
   },
-  "homepage": "https://github.com/NimaBoscarino/stigma#readme"
+  "homepage": "https://github.com/brunomveri/sudo#readme"
 }
