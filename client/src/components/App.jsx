@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 
-import Navbar from './components/Navbar';
-import PersistentDrawerLeft from "./components/PersistentDrawerLeft";
-import Map from './components/Map'
+import Navbar from './Navbar';
+import PersistentDrawerLeft from "./PersistentDrawerLeft";
+import Map from './Map'
 
 const App = () => {
 
