@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
 
+import Navbar from './components/Navbar';
+import PersistentDrawerLeft from "./components/PersistentDrawerLeft";
 import Map from './components/Map'
 
 const App = () => {
 
   return(
     <div>
-      <h1>Hello!</h1>
-      <Map
-      />
+      <Navbar />
+      <PersistentDrawerLeft />  
+      <Map />
     </div>
   )
 
