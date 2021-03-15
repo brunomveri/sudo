@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
+import './Map.css'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -14,22 +16,27 @@ const mapPosition = [49.2827, -123.1207];
 
 const locations = [
   {
-    title: 'Test 1',
-    description: 'Description 1',
-    coordinates: [49.275865, -123.152283]
+    title:  'Kitsilano Beach Basketball Court',
+    description: 'Outdoor basketball court with beauftiul backdrop next to the ocean',
+    latitude: 49.275865,
+    longitude: -123.152283,
+    image: "https://i.pinimg.com/originals/9a/fa/0a/9afa0aff5b7bb1e41a3b4de509a83921.jpg"
   },
   {
-    title: 'Test 2',
-    description: 'Description 2',
-    coordinates: [49.251903, -123.124281]
+    title:  'Douglas Park Running Track',
+    description: 'A track that circles a large park in a lovely neighbourhood',
+    latitude: 49.251903,
+    longitude: -123.124281,
+    image: "https://vancouver.ca//parks/parks/images/douglas01.jpg"
   },
   {
-    title: 'Test 3',
-    description: 'Description 3',
-    coordinates: [49.329947, -122.949554]
+    title:  'Quarry Rock',
+    description: 'A scenic hike close to great coffee and food',
+    latitude: 49.329947,
+    longitude: -122.949554,
+    image: "https://www.vancouvertrails.com/images/hikes-small/quarry-rock.jpg"
   }
 ]
-
 
 const Map = props => {
 
@@ -43,14 +50,16 @@ const Map = props => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       { locations.map(item => (
-        <Marker position={item.coordinates}>
+        <Marker position={[item.latitude, item.longitude]}>
           <Popup>
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
+            <img src={item.image} alt="Location Thumbnail" className="pinThumb"></img>
+            <h2 className="pinTitle">{item.title}</h2>
+            <p className="pinDescription">{item.description}</p>
           </Popup>
         </Marker>
       ))}
     </MapContainer>
   );
 };
+
 export default Map;
