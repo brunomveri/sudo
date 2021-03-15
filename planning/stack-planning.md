@@ -1,10 +1,9 @@
 # Tech Stack
 
 ### Front-End
-- React
+- React v16.8.6
+- Material UI Component Library
 - SCSS
-- Component Library - Material UI?
-- Utility CSS Framework - Tailwind CSS?
 
 ### Back-End
 - Ruby v2.6.2
