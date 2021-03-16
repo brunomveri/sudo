@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MediaCard from "./MediaCard";
 
 import './Map.css'
 
@@ -49,13 +50,25 @@ const Map = props => {
         attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      { locations.map(item => (
+      {/* { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]}>
           <Popup>
             <img src={item.image} alt="Location Thumbnail" className="pinThumb"></img>
             <h2 className="pinTitle">{item.title}</h2>
             <p className="pinDescription">{item.description}</p>
           </Popup>
+        </Marker>
+      ))} */}
+      { locations.map(item => (
+        <Marker position={[item.latitude, item.longitude]}>
+         <Popup>
+          <MediaCard 
+            image={item.image}
+            title={item.title}
+            description={item.description}
+            alt="Location Thumbnail"
+          />
+         </Popup>
         </Marker>
       ))}
     </MapContainer>
