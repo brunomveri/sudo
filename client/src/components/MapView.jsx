@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import MyLocationIcon from '@material-ui/icons/MyLocation';
 
 import LocateControl from './LocateControl';
 import LocationPopup from "./LocationPopup";
@@ -27,7 +26,6 @@ export default function MapView(props) {
     strings: {
         title: 'Show your location'
     },
-    onActivate: () => {} // callback before engine starts retrieving locations
   }
 
   return (
