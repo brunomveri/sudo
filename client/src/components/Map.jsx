@@ -1,18 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
 import MediaCard from "./MediaCard";
 
-import './Map.css'
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     height: "80vh",
-  },
+  }
 }));
 
-const Map = props => {
+export default function Map(props) {
 
   const { locations, mapPosition } = props;
   const classes = useStyles();  
@@ -38,6 +37,5 @@ const Map = props => {
       ))}
     </MapContainer>
   );
+  
 };
-
-export default Map;
