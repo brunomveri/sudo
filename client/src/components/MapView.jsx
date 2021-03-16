@@ -1,7 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 
+import LocateControl from './LocateControl';
 import LocationPopup from "./LocationPopup";
 
 const useStyles = makeStyles(theme => ({
@@ -12,13 +14,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Map(props) {
+export default function MapView(props) {
 
   const { locations, mapPosition } = props;
   const classes = useStyles();  
 
+  const locateOptions = {
+    initialZoomLevel: 13,
+    strings: {
+        title: 'Show me where I am, yo!'
+    },
+    onActivate: () => {} // callback before engine starts retrieving locations
+  }
+
   return (
-    <MapContainer
+    <Map
       center={mapPosition} zoom={13} className={classes.root}>
       <TileLayer
         attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -36,7 +46,8 @@ export default function Map(props) {
          </Popup>
         </Marker>
       ))}
-    </MapContainer>
+      <LocateControl options={locateOptions} startDirectly/>
+    </Map>
   );
 
 };
