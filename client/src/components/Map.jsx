@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MediaCard from "./MediaCard";
 
 import './Map.css'
 
@@ -25,11 +26,14 @@ const Map = props => {
       />
       { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]}>
-          <Popup>
-            <img src={item.image} alt="Location Thumbnail" className="pinThumb"></img>
-            <h2 className="pinTitle">{item.title}</h2>
-            <p className="pinDescription">{item.description}</p>
-          </Popup>
+         <Popup>
+          <MediaCard 
+            image={item.image}
+            title={item.title}
+            description={item.description}
+            alt="Location Thumbnail"
+          />
+         </Popup>
         </Marker>
       ))}
     </MapContainer>
