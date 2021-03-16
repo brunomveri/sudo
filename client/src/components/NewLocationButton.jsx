@@ -6,8 +6,8 @@ import AddLocationIcon from '@material-ui/icons/AddLocation';
 const useStyles = makeStyles(theme => ({
   root: {
     position: 'fixed',
-    right: '40px',
-    bottom: '40px',
+    right: '30px',
+    bottom: '30px',
     width: '60px',
     height: '60px',
     'background-color': '#fff',
