@@ -36,7 +36,7 @@ export default function MapView(props) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       { locations.map(item => (
-        <Marker position={[item.latitude, item.longitude]}>
+        <Marker position={[item.latitude, item.longitude]} key={item.id}>
          <Popup>
           <LocationPopup 
             image={item.image}
