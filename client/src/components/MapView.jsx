@@ -20,9 +20,12 @@ export default function MapView(props) {
   const classes = useStyles();  
 
   const locateOptions = {
-    initialZoomLevel: 13,
+    initialZoomLevel: 14,
+    flyTo: true,
+    setView: 'once',
+    icon: 'fa far fa-compass',
     strings: {
-        title: 'Show me where I am, yo!'
+        title: 'Show your location'
     },
     onActivate: () => {} // callback before engine starts retrieving locations
   }
