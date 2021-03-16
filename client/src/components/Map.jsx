@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-import MediaCard from "./MediaCard";
+import LocationPopup from "./LocationPopup";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,7 +26,7 @@ export default function Map(props) {
       { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]}>
          <Popup>
-          <MediaCard 
+          <LocationPopup 
             image={item.image}
             title={item.title}
             description={item.description}
@@ -37,5 +37,5 @@ export default function Map(props) {
       ))}
     </MapContainer>
   );
-  
+
 };
