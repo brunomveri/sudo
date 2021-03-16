@@ -20,9 +20,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import ControlledOpenSelect from './ControlledOpenSelect';
-import Basketball from '@material-ui/icons/SportsBasketball';
-import Bike from '@material-ui/icons/DirectionsBike';
-import Running from '@material-ui/icons/DirectionsRun';
+
+import IconAvatars from './IconAvatars';
 
 
 const drawerWidth = 240;
@@ -161,13 +160,9 @@ export default function PersistentDrawerLeft() {
             </div>
           </Typography>
           <div className="icons">
-           
-                <Basketball />
-             
-                <Bike />
-              
-                <Running />
-          
+            
+          <IconAvatars />
+
           </div>
           {/* <ControlledOpenSelect /> */}
         </Toolbar>
