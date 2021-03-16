@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-import Navbar from './Navbar';
 import PersistentDrawerLeft from "./PersistentDrawerLeft";
 import MapView from './MapView'
-// import ControlledOpenSelect from './ControlledOpenSelect'
 
 const App = () => {
 
@@ -26,7 +24,6 @@ const App = () => {
   
   return(
     <div>
-      {/* <Navbar /> */}
       <PersistentDrawerLeft />  
       <MapView
         locations={state.locations}

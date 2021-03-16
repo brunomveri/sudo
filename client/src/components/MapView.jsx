@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 
 import LocateControl from './LocateControl';
 import LocationPopup from "./LocationPopup";
@@ -19,7 +20,7 @@ export default function MapView(props) {
   const classes = useStyles();  
 
   const locateOptions = {
-    position: 'topright',
+    initialZoomLevel: 13,
     strings: {
         title: 'Show me where I am, yo!'
     },
