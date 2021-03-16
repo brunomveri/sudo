@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
+    height: '65px',
     backgroundColor: "#3E434C",
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -151,11 +152,9 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <img src={require("../images/logo_transparent_v3.png")} height="40px" width="40px" alt="Bruno"></img>
+          <img src={require("../images/logo_transparent_v3.png")} height="40px" width="40px" alt="Sudo"></img>
           <Typography variant="h6" noWrap>
-            <div fontFamily="Arial">
-              <p className="logo">Sudo</p>
-            </div>
+            Sudo
           </Typography>
           <ControlledOpenSelect />
         </Toolbar>
