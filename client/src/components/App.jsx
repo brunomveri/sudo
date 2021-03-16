@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
 
 import PersistentDrawerLeft from "./PersistentDrawerLeft";
 import MapView from './MapView'
