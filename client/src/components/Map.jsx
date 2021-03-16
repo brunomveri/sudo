@@ -7,7 +7,8 @@ import LocationPopup from "./LocationPopup";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    height: "80vh",
+    height: "calc(100vh - 65px)",
+    top: '65px'
   }
 }));
 
