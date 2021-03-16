@@ -4,7 +4,7 @@ import './App.css';
 
 import Navbar from './Navbar';
 import PersistentDrawerLeft from "./PersistentDrawerLeft";
-import Map from './Map'
+import MapView from './MapView'
 // import ControlledOpenSelect from './ControlledOpenSelect'
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
     <div>
       {/* <Navbar /> */}
       <PersistentDrawerLeft />  
-      <Map
+      <MapView
         locations={state.locations}
         mapPosition={state.mapPosition}
       />
