@@ -50,15 +50,6 @@ const Map = props => {
         attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* { locations.map(item => (
-        <Marker position={[item.latitude, item.longitude]}>
-          <Popup>
-            <img src={item.image} alt="Location Thumbnail" className="pinThumb"></img>
-            <h2 className="pinTitle">{item.title}</h2>
-            <p className="pinDescription">{item.description}</p>
-          </Popup>
-        </Marker>
-      ))} */}
       { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]}>
          <Popup>
