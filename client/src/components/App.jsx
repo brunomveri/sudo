@@ -26,7 +26,7 @@ const App = () => {
   
   return(
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <PersistentDrawerLeft />  
       <Map
         locations={state.locations}
