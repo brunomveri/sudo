@@ -26,7 +26,9 @@ export default function NewLocationButton(props) {
   const classes = useStyles();
 
   return (
-    <Button className={'leaflet-bar leaflet-control ' + classes.root}>
+    <Button className={'leaflet-bar leaflet-control ' + classes.root}
+      disableRipple
+    >
       <AddLocationIcon className={classes.locationIcon} />
     </Button>
   )
