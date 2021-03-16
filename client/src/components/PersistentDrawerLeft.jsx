@@ -21,6 +21,8 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import ControlledOpenSelect from './ControlledOpenSelect';
 
+import IconAvatars from './IconAvatars';
+
 
 const drawerWidth = 240;
 
@@ -156,7 +158,12 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap>
             Sudo
           </Typography>
-          <ControlledOpenSelect />
+          <div className="icons">
+            
+          <IconAvatars />
+
+          </div>
+          {/* <ControlledOpenSelect /> */}
         </Toolbar>
       </AppBar>
       <Drawer
