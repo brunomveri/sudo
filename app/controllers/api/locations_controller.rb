@@ -1,8 +1,7 @@
 class Api::LocationsController < ApplicationController
   def index
-    puts 'Hello'
     @locations = Location.all
-    render :json => {
+    render json: {
       message: @locations
     }
   end
