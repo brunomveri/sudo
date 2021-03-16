@@ -15,6 +15,10 @@ const useStyles = makeStyles(theme => ({
       'background-color': '#f4f4f4'
     }
   },
+  locationIcon: {
+    width: '36px',
+    height: '36px'
+  }
 }));
 
 export default function NewLocationButton(props) {
@@ -23,7 +27,7 @@ export default function NewLocationButton(props) {
 
   return (
     <Button className={'leaflet-bar leaflet-control ' + classes.root}>
-      <AddLocationIcon />
+      <AddLocationIcon className={classes.locationIcon} />
     </Button>
   )
 
