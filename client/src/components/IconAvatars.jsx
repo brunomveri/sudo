@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function IconAvatars() {
   const classes = useStyles();
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState("all");
   const isMenuSelected = () => {
     return !["all", "basketball", "bike", "running", null].includes(selected)
   };
