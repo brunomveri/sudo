@@ -5,9 +5,15 @@ import AddLocationIcon from '@material-ui/icons/AddLocation';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    'z-index': '1000',
+    'box-sizing': 'content-box',
+    'border-radius': '2px',
     position: 'fixed',
     right: '30px',
     bottom: '30px',
+    border: '2px solid rgba(0,0,0,0.2)',
+  },
+  button: {
     width: '60px',
     height: '60px',
     'background-color': '#fff',
@@ -26,11 +32,14 @@ export default function NewLocationButton(props) {
   const classes = useStyles();
 
   return (
-    <Button className={'leaflet-bar leaflet-control ' + classes.root}
-      disableRipple
-    >
-      <AddLocationIcon className={classes.locationIcon} />
-    </Button>
+    <div className={classes.root}>
+      <Button
+        className={classes.button}
+        disableRipple
+      >
+        <AddLocationIcon className={classes.locationIcon} />
+      </Button>
+    </div>
   )
 
 };
