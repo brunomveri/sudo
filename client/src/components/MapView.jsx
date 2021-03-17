@@ -5,6 +5,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
 import LocationPopup from "./LocationPopup";
+import DarkModeSwitch from "./DarkModeSwitch"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,3 +54,9 @@ export default function MapView(props) {
   );
 
 };
+
+// Dark theme: change lines 36 and 37 to:
+
+// attribution='© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+// url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+
