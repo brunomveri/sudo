@@ -43,7 +43,6 @@ export default function MapView(props) {
             image={item.image}
             title={item.title}
             description={item.description}
-            alt="Location Thumbnail"
           />
          </Popup>
         </Marker>

@@ -16,7 +16,7 @@ const App = () => {
     .then((response) => {
       setState({
         ...state,
-        locations: response.data.message
+        locations: response.data
       });
     }).catch(err => console.log(err));
   }, []);
