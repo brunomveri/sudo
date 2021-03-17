@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme, fade } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,10 +19,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import ControlledOpenSelect from './ControlledOpenSelect';
-
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import Avatar from '@material-ui/core/Avatar';
 import IconAvatars from './IconAvatars';
-
+import { green, pink } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const drawerWidth = 240;
 
@@ -120,9 +121,22 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
+  pink: {
+    color: theme.palette.getContrastText(pink[500]),
+    backgroundColor: pink[500],
+  },
+  green: {
+    color: '#fff',
+    backgroundColor: "#59606d",
+  },
+  selected: {
+    color: '#fff',
+    backgroundColor: '#72acb1'
+  }
 }));
 
 export default function PersistentDrawerLeft() {
+  const [selected, setSelected] = useState("isNotFavourited");
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -155,15 +169,15 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <img src={require("../images/logo_transparent_v3.png")} height="40px" width="40px" alt="Sudo"></img>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6">
             Sudo
           </Typography>
           <div className="icons">
-            
-          <IconAvatars />
-
+            <IconAvatars className="IconAvatarFavourite" />
+            <Avatar className={selected === "isFavourited" ? classes.pink : classes.green}>
+              <FavoriteIcon onClick={() => setSelected("isFavourited")} />
+            </Avatar>
           </div>
-          {/* <ControlledOpenSelect /> */}
         </Toolbar>
       </AppBar>
       <Drawer
