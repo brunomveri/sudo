@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    resources :locations, only: [:index, :new, :create]
+    resources :locations, only: [:index, :create]
     resources :activities, only: [:index]
-    resources :users, only: [:new] do
-      resources :favourites, except: [:update]
+    resources :users, only: [] do
+      resources :favourites, only: [:index, :create, :destroy]
     end
   end
 
