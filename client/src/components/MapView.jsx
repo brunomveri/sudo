@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 import LocateControl from './LocateControl';
+import NewLocationButton from './NewLocationButton';
 import LocationPopup from "./LocationPopup";
 
 const useStyles = makeStyles(theme => ({
@@ -48,6 +49,7 @@ export default function MapView(props) {
         </Marker>
       ))}
       <LocateControl options={locateOptions} startDirectly/>
+      <NewLocationButton />
     </Map>
   );
 
