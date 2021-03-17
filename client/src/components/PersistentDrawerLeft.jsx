@@ -149,6 +149,9 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar)
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -162,7 +165,8 @@ export default function PersistentDrawerLeft() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            // onClick={handleDrawerOpen}
+            onClick={showSidebar}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
@@ -180,7 +184,16 @@ export default function PersistentDrawerLeft() {
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer
+      {/* New sidebar */}
+      <nav className={sidebar ? 'nav-menu-active' : 'nav-menu'}>
+        <ul className='nav-menu-items'>
+          <li className='navbar-toggle'>
+            {/* <p>Hey!</p> */}
+          </li>
+        </ul>
+      </nav>
+
+      {/* <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="left"
@@ -208,7 +221,7 @@ export default function PersistentDrawerLeft() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-        {/* <List>
+        <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -224,15 +237,15 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary={text} />
             </ListItem>
           ))}
-        </List> */}
-      </Drawer>
+        </List>
+      </Drawer> */}
       {/* <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
       >
-        <div className={classes.drawerHeader} /> */}
-        {/* <Typography paragraph>
+        <div className={classes.drawerHeader} />
+        <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
           facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
@@ -254,8 +267,8 @@ export default function PersistentDrawerLeft() {
           tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
           nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography> */}
-      {/* </main> */}
+        </Typography>
+      </main> */}
     </div>
   );
 }
