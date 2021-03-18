@@ -20,6 +20,7 @@ code {
   align-items: center;
 
   margin-right: 20px;
+
 }
 
 .nav-menu {
@@ -61,4 +62,24 @@ code {
 
 .content {
   display: flex;
+
+
+}
+
+.activityIcons {
+  display: flex;
+  align-items: center;
+}
+
+.makeStyles-root-18 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.sunMoonSwitch {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
 }

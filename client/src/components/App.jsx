@@ -92,12 +92,14 @@ const App = () => {
   return(
 
     <div className="content">
-      <PersistentDrawerLeft
-        favouritesOnly={state.favouritesOnly}
-        toggleFavouritesOnly={toggleFavouritesOnly}
-        darkMode={state.darkMode}
-        toggleDarkMode={toggleDarkMode}
-      />  
+      <div className="activityIcons">
+        <PersistentDrawerLeft 
+          favouritesOnly={state.favouritesOnly}
+          toggleFavouritesOnly={toggleFavouritesOnly}
+          darkMode={state.darkMode}
+          toggleDarkMode={toggleDarkMode}
+        />  
+      </div>
       <MapView
         locations={state.locations}
         mapPosition={state.mapPosition}
