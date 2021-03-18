@@ -20,6 +20,7 @@ code {
   align-items: center;
 
   margin-right: 20px;
+
 }
 
 .nav-menu {
@@ -75,4 +76,10 @@ code {
   flex-direction: row;
   width: 100%;
   justify-content: center;
+}
+
+.sunMoonSwitch {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
 }
