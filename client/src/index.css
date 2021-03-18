@@ -19,7 +19,7 @@ code {
   justify-content: space-between;
   align-items: center;
 
-  margin-left: 50px;
+  margin-right: 20px;
 }
 
 .nav-menu {
@@ -61,6 +61,4 @@ code {
 
 .content {
   display: flex;
-  margin-right: 20px;
 }
-
