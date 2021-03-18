@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MapView(props) {
 
-  const { locations, mapPosition } = props;
+  const { darkMode, locations, mapPosition } = props;
   const classes = useStyles();  
 
   const locateOptions = {
@@ -30,21 +30,18 @@ export default function MapView(props) {
     },
   }
 
+  const attributionDark = '© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  const urlDark = "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+  const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+
   return (
     <Map
       center={mapPosition} zoom={13} className={classes.root}>
       <TileLayer
-
-    // Dark theme:
-
-    attribution='© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-
-    // Light theme:
-
-    //     attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    //     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-
+        attribution={darkMode ? attributionDark : attributionLight}
+        url={darkMode ? urlDark : urlLight}
       />
       { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]} key={item.id}>

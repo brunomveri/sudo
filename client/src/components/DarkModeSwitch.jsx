@@ -22,23 +22,20 @@ const PurpleSwitch = withStyles({
 })(Switch);
 
 
-export default function CustomizedSwitches() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedC: true,
-  });
+export default function CustomizedSwitches(props) {
+  // const [darkMode, setDarkMode] = React.useState(false);
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
+  // const handleChange = () => {
+  //   setDarkMode(!darkMode);
+  // };
 
   return (
     <FormGroup>
       <FormControlLabel
-        control={<PurpleSwitch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+        control={<PurpleSwitch checked={props.darkMode} onChange={() => props.toggleDarkMode()} />}
         label=""
       />
     </FormGroup>
   );
 }
+
