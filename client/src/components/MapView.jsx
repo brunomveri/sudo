@@ -5,7 +5,6 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
 import LocationPopup from "./LocationPopup";
-import DarkModeSwitch from "./DarkModeSwitch"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,7 +33,6 @@ export default function MapView(props) {
   const urlDark = "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
   const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-
 
   return (
     <Map

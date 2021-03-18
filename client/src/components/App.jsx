@@ -48,7 +48,7 @@ const App = () => {
 
   }, []);
 
-  const toggleFavourited = (id) => {
+  const toggleFavourited = id => {
 
     setState(current => {
 
@@ -73,7 +73,13 @@ const App = () => {
 
     });
 
-  }
+  };
+
+  const toggleFavouritesOnly = () => {
+
+    console.log('toggled');
+
+  };
 
   const toggleDarkMode = function() {
     setState({
@@ -85,7 +91,9 @@ const App = () => {
   return(
 
     <div className="content">
-      <PersistentDrawerLeft 
+      <PersistentDrawerLeft
+        favouritesOnly={state.favouritesOnly}
+        toggleFavouritesOnly={toggleFavouritesOnly}
         darkMode={state.darkMode}
         toggleDarkMode={toggleDarkMode}
       />  
