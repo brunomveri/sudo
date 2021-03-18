@@ -123,11 +123,11 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
-  pink: {
+  pinkIcon: {
     color: theme.palette.getContrastText(pink[500]),
     backgroundColor: pink[500],
   },
-  green: {
+  defaultIcon: {
     color: '#fff',
     backgroundColor: "#59606d",
   },
@@ -138,8 +138,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
-  const [selected, setSelected] = useState("isNotFavourited");
+
+  const {
+    favouritesOnly,
+    toggleFavouritesOnly,
+    darkMode,
+    toggleDarkMode
+  } = props;
+
   const classes = useStyles();
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -180,11 +188,17 @@ export default function PersistentDrawerLeft(props) {
           </Typography>
           <div className="icons">
             <IconAvatars className="IconAvatarFavourite" />
-            <Avatar className={selected === "isFavourited" ? classes.pink : classes.green}>
-              <FavoriteIcon onClick={() => setSelected("isFavourited")} />
+            <Avatar
+              className={favouritesOnly ? classes.pinkIcon : classes.defaultIcon}
+              onClick={() => toggleFavouritesOnly()}  
+            >
+              <FavoriteIcon />
             </Avatar>
           </div>
-          <DarkSwitch className="darkSwitch" darkMode={props.darkMode} toggleDarkMode={props.toggleDarkMode} />
+          <DarkSwitch
+            className="darkSwitch"
+            darkMode={darkMode}
+            toggleDarkMode={toggleDarkMode} />
           <LogoutButton />
         </Toolbar>
       </AppBar>

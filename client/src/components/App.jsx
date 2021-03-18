@@ -12,7 +12,8 @@ const App = () => {
     locations: [],
     activities: [],
     mapPosition: [49.2827, -123.1207],
-    darkMode: false
+    darkMode: false,
+    favouritesOnly: false
   })
   
   useEffect(() => {
@@ -23,31 +24,31 @@ const App = () => {
     
     Promise.all([locationsReq, activitiesReq, favouritesReq])
       .then((responses) => {
+      
+        const [locationsRes, activitesRes, favouritesRes] = responses;
     
-      const [locationsRes, activitesRes, favouritesRes] = responses;
-  
-      const locations = locationsRes.data;
-      const activities = activitesRes.data;
-      const favourites = favouritesRes.data;
+        const locations = locationsRes.data;
+        const activities = activitesRes.data;
+        const favourites = favouritesRes.data;
 
-      const favouriteLocations = favourites.map(fave => fave.location_id);
+        const favouriteLocations = favourites.map(fave => fave.location_id);
 
-      locations.forEach(location => {
-        location.favourited = favouriteLocations.includes(location.id)
-        location.toggleFavourited = toggleFavourited
-      });
-    
-      setState(current => ({
-        ...current,
-        locations,
-        activities
-      }));
+        locations.forEach(location => {
+          location.favourited = favouriteLocations.includes(location.id)
+          location.toggleFavourited = toggleFavourited
+        });
+      
+        setState(current => ({
+          ...current,
+          locations,
+          activities
+        }));
 
-  })
+      })
 
   }, []);
 
-  const toggleFavourited = (id) => {
+  const toggleFavourited = id => {
 
     setState(current => {
 
@@ -72,7 +73,14 @@ const App = () => {
 
     });
 
-  }
+  };
+
+  const toggleFavouritesOnly = () => {
+    setState({
+      ...state,
+      favouritesOnly: !state.favouritesOnly
+    });
+  };
 
   const toggleDarkMode = function() {
     setState({
@@ -86,6 +94,8 @@ const App = () => {
     <div className="content">
       <div className="activityIcons">
         <PersistentDrawerLeft 
+          favouritesOnly={state.favouritesOnly}
+          toggleFavouritesOnly={toggleFavouritesOnly}
           darkMode={state.darkMode}
           toggleDarkMode={toggleDarkMode}
         />  
@@ -94,6 +104,7 @@ const App = () => {
         locations={state.locations}
         mapPosition={state.mapPosition}
         darkMode={state.darkMode}
+        favouritesOnly={state.favouritesOnly}
       />
     </div>
   )
