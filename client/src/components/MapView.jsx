@@ -5,6 +5,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
 import LocationPopup from "./LocationPopup";
+import DarkModeSwitch from "./DarkModeSwitch"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,8 +34,17 @@ export default function MapView(props) {
     <Map
       center={mapPosition} zoom={13} className={classes.root}>
       <TileLayer
-        attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+    // Dark theme:
+
+    attribution='© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+
+    // Light theme:
+
+    //     attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    //     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
       />
       { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]} key={item.id}>
