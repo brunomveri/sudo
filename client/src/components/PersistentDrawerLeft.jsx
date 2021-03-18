@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const [selected, setSelected] = useState("isNotFavourited");
   const classes = useStyles();
   const theme = useTheme();
@@ -179,7 +179,7 @@ export default function PersistentDrawerLeft() {
               <FavoriteIcon onClick={() => setSelected("isFavourited")} />
             </Avatar>
           </div>
-          <DarkSwitch className="darkSwitch" />
+          <DarkSwitch className="darkSwitch" darkMode={props.darkMode} toggleDarkMode={props.toggleDarkMode} />
         </Toolbar>
       </AppBar>
       <Drawer

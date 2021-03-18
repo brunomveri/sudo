@@ -8,7 +8,8 @@ const App = () => {
 
   const [state, setState] = useState({
     locations: [],
-    mapPosition: [49.2827, -123.1207]
+    mapPosition: [49.2827, -123.1207],
+    darkMode: false
   })
   
   useEffect(() => {
@@ -20,13 +21,25 @@ const App = () => {
       });
     }).catch(err => console.log(err));
   }, []);
+
+  const toggleDarkMode = function() {
+    setState({
+      ...state,
+      darkMode: !state.darkMode
+    });
+    console.log("HERE: ", state.darkMode);
+  };
   
   return(
     <div>
-      <PersistentDrawerLeft />  
+      <PersistentDrawerLeft 
+      darkMode={state.darkMode}
+      toggleDarkMode={toggleDarkMode}
+      />  
       <MapView
         locations={state.locations}
         mapPosition={state.mapPosition}
+        darkMode={state.darkMode}
       />
     </div>
   )
