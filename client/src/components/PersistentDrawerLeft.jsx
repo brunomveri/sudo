@@ -123,11 +123,11 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
-  pink: {
+  pinkIcon: {
     color: theme.palette.getContrastText(pink[500]),
     backgroundColor: pink[500],
   },
-  green: {
+  defaultIcon: {
     color: '#fff',
     backgroundColor: "#59606d",
   },
@@ -146,8 +146,8 @@ export default function PersistentDrawerLeft(props) {
     toggleDarkMode
   } = props;
 
-  const [selected, setSelected] = useState("isNotFavourited");
   const classes = useStyles();
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -189,7 +189,7 @@ export default function PersistentDrawerLeft(props) {
           <div className="icons">
             <IconAvatars className="IconAvatarFavourite" />
             <Avatar
-              className={favouritesOnly ? classes.pink : classes.green}
+              className={favouritesOnly ? classes.pinkIcon : classes.defaultIcon}
               onClick={() => toggleFavouritesOnly()}  
             >
               <FavoriteIcon />
