@@ -29,8 +29,10 @@ const App = () => {
       const activities = activitesRes.data;
       const favourites = favouritesRes.data;
 
+      const favouriteLocations = favourites.map(fave => fave.location_id);
+
       locations.forEach(location => {
-        location.favourited = false;
+        location.favourited = favouriteLocations.includes(location.id)
         location.toggleFavourited = toggleFavourited
       });
     
