@@ -6,6 +6,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Moon from '@material-ui/icons/Brightness2Outlined';
+import Sun from '@material-ui/icons/WbSunnyOutlined';
 
 const PurpleSwitch = withStyles({
   switchBase: {
@@ -31,10 +33,14 @@ export default function CustomizedSwitches(props) {
 
   return (
     <FormGroup>
-      <FormControlLabel
-        control={<PurpleSwitch checked={props.darkMode} onChange={() => props.toggleDarkMode()} />}
-        label=""
-      />
+      <div className="sunMoonSwitch">
+        <Sun />
+        <FormControlLabel
+          control={<PurpleSwitch checked={props.darkMode} onChange={() => props.toggleDarkMode()} />}
+          label=""
+        />
+        <Moon />
+      </div>
     </FormGroup>
   );
 }
