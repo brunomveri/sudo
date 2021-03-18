@@ -36,7 +36,7 @@ export default function MapView(props) {
       <TileLayer
 
     // Dark theme:
-    
+
     attribution='© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
 
@@ -44,7 +44,6 @@ export default function MapView(props) {
 
     //     attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     //     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-
 
       />
       { locations.map(item => (
