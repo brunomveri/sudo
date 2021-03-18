@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
@@ -25,6 +25,13 @@ export default function LocationPopup(props) {
   const { title, image, description } = props;
   const classes = useStyles();
 
+  const [favourited, setFavourited] = useState();
+
+  const toggleFavourited = () => {
+    setFavourited(!favourited);
+    console.log(favourited);
+  }
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -43,7 +50,11 @@ export default function LocationPopup(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          color={favourited ? "secondary" : "default"}
+          onClick={() => toggleFavourited()}
+        >
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
