@@ -22,7 +22,7 @@ const App = () => {
   }, []);
   
   return(
-    <div>
+    <div className="content">
       <PersistentDrawerLeft />  
       <MapView
         locations={state.locations}
