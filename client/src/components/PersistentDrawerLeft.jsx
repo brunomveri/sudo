@@ -143,7 +143,9 @@ export default function PersistentDrawerLeft(props) {
     favouritesOnly,
     toggleFavouritesOnly,
     darkMode,
-    toggleDarkMode
+    toggleDarkMode,
+    activitySelected,
+    setActivity
   } = props;
 
   const classes = useStyles();
@@ -187,7 +189,11 @@ export default function PersistentDrawerLeft(props) {
             Sudo
           </Typography>
           <div className="icons">
-            <IconAvatars className="IconAvatarFavourite" />
+            <IconAvatars 
+              className="IconAvatarFavourite" 
+              activitySelected={activitySelected}
+              setActivity={setActivity}
+            />
             <Avatar
               className={favouritesOnly ? classes.pinkIcon : classes.defaultIcon}
               onClick={() => toggleFavouritesOnly()}  

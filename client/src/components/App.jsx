@@ -13,8 +13,9 @@ const App = () => {
     activities: [],
     mapPosition: [49.2827, -123.1207],
     darkMode: false,
-    favouritesOnly: false
-  })
+    favouritesOnly: false,
+    activitySelected: 0
+  });
   
   useEffect(() => {
 
@@ -89,6 +90,13 @@ const App = () => {
     });
   };
   
+  const setActivity = function(id) {
+    setState({
+      ...state,
+      activitySelected: id
+    });
+  };
+  
   return(
 
     <div className="content">
@@ -98,6 +106,8 @@ const App = () => {
           toggleFavouritesOnly={toggleFavouritesOnly}
           darkMode={state.darkMode}
           toggleDarkMode={toggleDarkMode}
+          activitySelected={state.activitySelected}
+          setActivity={setActivity}
         />  
       </div>
       <MapView
@@ -105,6 +115,7 @@ const App = () => {
         mapPosition={state.mapPosition}
         darkMode={state.darkMode}
         favouritesOnly={state.favouritesOnly}
+        activitySelected={state.activitySelected}
       />
     </div>
   )

@@ -5,7 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Basketball from '@material-ui/icons/SportsBasketball';
 import Bike from '@material-ui/icons/DirectionsBike';
 import Running from '@material-ui/icons/DirectionsRun';
-import Soccer from '@material-ui/icons/SportsSoccerOutlined';
+import Tennis from '@material-ui/icons/SportsTennisOutlined';
 import Calisthenics from '@material-ui/icons/FitnessCenterOutlined';
 import Volleyball from '@material-ui/icons/SportsVolleyballOutlined';
 import Yoga from '@material-ui/icons/AccessibilityNewOutlined';
@@ -35,39 +35,66 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function IconAvatars() {
+export default function IconAvatars(props) {
+  const { activitySelected, setActivity } = props;
   const classes = useStyles();
-  const [selected, setSelected] = useState("all");
-  const isMenuSelected = () => {
-    return !["all", "basketball", "bike", "running", "soccer", "calisthenics", "volleyball", "yoga", "hiking", null].includes(selected)
-  };
+
   return (
     <div className={classes.root}>
-      <Avatar className={selected === "all" ? classes.selected : classes.green} onClick={() => setSelected("all")}>
+      <Avatar 
+        className={activitySelected === 0 ? classes.selected : classes.green}
+        onClick={() => setActivity(0)}
+        id="0"
+      >
         <PublicOutlinedIcon title="all" />
       </Avatar>
-      <Avatar className={selected === "basketball" ? classes.selected : classes.green} onClick={() => setSelected("basketball")}>
+      <Avatar 
+         className={activitySelected === 2 ? classes.selected : classes.green}
+         onClick={() => setActivity(2)}
+        id="2"
+      >
         <Basketball />
       </Avatar>
-      <Avatar className={selected === "bike" ? classes.selected : classes.green} onClick={() => setSelected("bike")}>
+      <Avatar 
+        className={activitySelected === 3 ? classes.selected : classes.green}
+        onClick={() => setActivity(3)}
+        id="3"
+      >
         <Bike />
       </Avatar>
-      <Avatar className={selected === "running" ? classes.selected : classes.green} onClick={() => setSelected("running")}>
+      <Avatar 
+        className={activitySelected === 1 ? classes.selected : classes.green}
+        onClick={() => setActivity(1)}
+        id="1"
+      >
         <Running />
       </Avatar>
-      <Avatar className={selected === "soccer" ? classes.selected : classes.green} onClick={() => setSelected("soccer")}>
-        <Soccer />
+      <Avatar 
+        className={activitySelected === 5 ? classes.selected : classes.green}
+        onClick={() => setActivity(5)}
+        id="5"
+      >
+        <Tennis />
       </Avatar>
-      <Avatar className={selected === "calisthenics" ? classes.selected : classes.green} onClick={() => setSelected("calisthenics")}>
+      <Avatar 
+        className={activitySelected === 4 ? classes.selected : classes.green}
+        onClick={() => setActivity(4)}
+        id="4"
+      >
         <Calisthenics />
       </Avatar>
-      <Avatar className={selected === "volleyball" ? classes.selected : classes.green} onClick={() => setSelected("volleyball")}>
+      <Avatar 
+        className={activitySelected === 6 ? classes.selected : classes.green}
+        onClick={() => setActivity(6)}
+        id="6"
+      >
         <Volleyball />
       </Avatar>
-      <Avatar className={selected === "yoga" ? classes.selected : classes.green} onClick={() => setSelected("yoga")}>
-        <Yoga />
-      </Avatar>
-      <Avatar className={selected === "hiking" ? classes.selected : classes.green} onClick={() => setSelected("hiking")}>
+      <Avatar 
+        className={activitySelected === 7 ? classes.selected : classes.green}
+        onClick={() => setActivity(7)}
+        id="7"
+      >
         <Hiking />
       </Avatar>
     </div>
