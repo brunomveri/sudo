@@ -180,8 +180,11 @@ export default function PersistentDrawerLeft(props) {
           </Typography>
           <div className="icons">
             <IconAvatars className="IconAvatarFavourite" />
-            <Avatar className={selected === "isFavourited" ? classes.pink : classes.green}>
-              <FavoriteIcon onClick={() => setSelected("isFavourited")} />
+            <Avatar
+              className={selected === "isFavourited" ? classes.pink : classes.green}
+              onClick={() => setSelected("isFavourited")}  
+            >
+              <FavoriteIcon />
             </Avatar>
           </div>
           <DarkSwitch className="darkSwitch" darkMode={props.darkMode} toggleDarkMode={props.toggleDarkMode} />
