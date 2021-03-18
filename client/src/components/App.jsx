@@ -49,22 +49,28 @@ const App = () => {
   const toggleFavourited = (id) => {
 
     setState(current => {
+
+      const currentlyFavourite = current.locations[id - 1].favourited;
   
       const location = {
         ...current.locations[id - 1],
-        favourited: !current.locations[id - 1].favourited
+        favourited: !currentlyFavourite
       };
 
       const locations = current.locations;
       locations[id - 1] = location;
 
+      currentlyFavourite
+        ? axios.delete(`/api/users/${user_id}/favourites/${id}`)
+        : axios.post(`/api/users/${user_id}/favourites`, {location_id: id})
+
       return ({
         ...current, 
         locations
-      });
+      })
 
-    })
-  
+    });
+
   }
   
   return(
