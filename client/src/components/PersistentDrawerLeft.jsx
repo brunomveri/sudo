@@ -24,6 +24,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconAvatars from './IconAvatars';
 import { green, pink } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import DarkSwitch from './DarkModeSwitch';
 
 const drawerWidth = 240;
 
@@ -135,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const [selected, setSelected] = useState("isNotFavourited");
   const classes = useStyles();
   const theme = useTheme();
@@ -182,6 +183,7 @@ export default function PersistentDrawerLeft() {
               <FavoriteIcon onClick={() => setSelected("isFavourited")} />
             </Avatar>
           </div>
+          <DarkSwitch className="darkSwitch" darkMode={props.darkMode} toggleDarkMode={props.toggleDarkMode} />
         </Toolbar>
       </AppBar>
       {/* New sidebar */}

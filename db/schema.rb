@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_234805) do
+ActiveRecord::Schema.define(version: 2021_03_17_152941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_favourites_on_location_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "title"
@@ -23,6 +39,18 @@ ActiveRecord::Schema.define(version: 2021_03_15_234805) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_locations_on_activity_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "favourites", "locations"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "locations", "activities"
 end
