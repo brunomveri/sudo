@@ -46,10 +46,13 @@ export default function MapView(props) {
       { locations.map(item => (
         <Marker position={[item.latitude, item.longitude]} key={item.id}>
          <Popup>
-          <LocationPopup 
+          <LocationPopup
+            id={item.id}
             image={item.image}
             title={item.title}
             description={item.description}
+            favourited={item.favourited}
+            toggleFavourited={item.toggleFavourited}
           />
          </Popup>
         </Marker>

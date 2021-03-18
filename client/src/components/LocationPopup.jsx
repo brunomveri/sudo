@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 export default function LocationPopup(props) {
 
-  const { title, image, description } = props;
+  const { id, title, image, description, favourited, toggleFavourited } = props;
   const classes = useStyles();
 
   return (
@@ -43,7 +43,11 @@ export default function LocationPopup(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          color={favourited ? "secondary" : "default"}
+          onClick={() => toggleFavourited(id)}
+        >
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
