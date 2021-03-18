@@ -31,10 +31,11 @@ const App = () => {
   };
   
   return(
-    <div>
+
+    <div className="content">
       <PersistentDrawerLeft 
-      darkMode={state.darkMode}
-      toggleDarkMode={toggleDarkMode}
+        darkMode={state.darkMode}
+        toggleDarkMode={toggleDarkMode}
       />  
       <MapView
         locations={state.locations}

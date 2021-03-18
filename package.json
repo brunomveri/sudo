@@ -25,5 +25,7 @@
   "bugs": {
     "url": "https://github.com/brunomveri/sudo/issues"
   },
-  "homepage": "https://github.com/brunomveri/sudo#readme"
+  "homepage": "https://github.com/brunomveri/sudo#readme",
+  "dependencies": {},
+  "devDependencies": {}
 }
