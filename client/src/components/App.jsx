@@ -11,7 +11,8 @@ const App = () => {
   const [state, setState] = useState({
     locations: [],
     activities: [],
-    mapPosition: [49.2827, -123.1207]
+    mapPosition: [49.2827, -123.1207],
+    darkMode: false
   })
   
   useEffect(() => {
@@ -72,13 +73,25 @@ const App = () => {
     });
 
   }
+
+  const toggleDarkMode = function() {
+    setState({
+      ...state,
+      darkMode: !state.darkMode
+    });
+  };
   
   return(
-    <div>
-      <PersistentDrawerLeft />  
+
+    <div className="content">
+      <PersistentDrawerLeft 
+        darkMode={state.darkMode}
+        toggleDarkMode={toggleDarkMode}
+      />  
       <MapView
         locations={state.locations}
         mapPosition={state.mapPosition}
+        darkMode={state.darkMode}
       />
     </div>
   )
