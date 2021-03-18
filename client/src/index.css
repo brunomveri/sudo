@@ -61,4 +61,11 @@ code {
 
 .content {
   display: flex;
+
+
+}
+
+.activityIcons {
+  display: flex;
+  align-items: center;
 }

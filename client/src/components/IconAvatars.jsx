@@ -5,6 +5,10 @@ import Avatar from '@material-ui/core/Avatar';
 import Basketball from '@material-ui/icons/SportsBasketball';
 import Bike from '@material-ui/icons/DirectionsBike';
 import Running from '@material-ui/icons/DirectionsRun';
+import Soccer from '@material-ui/icons/SportsSoccerOutlined';
+import Calisthenics from '@material-ui/icons/FitnessCenterOutlined';
+import Volleyball from '@material-ui/icons/SportsVolleyballOutlined';
+import Yoga from '@material-ui/icons/AccessibilityNewOutlined';
 import LongMenu from './LongMenu';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 
@@ -34,7 +38,7 @@ export default function IconAvatars() {
   const classes = useStyles();
   const [selected, setSelected] = useState("all");
   const isMenuSelected = () => {
-    return !["all", "basketball", "bike", "running", null].includes(selected)
+    return !["all", "basketball", "bike", "running", "soccer", "Calisthenics", "Volleyball", "Yoga", null].includes(selected)
   };
   return (
     <div className={classes.root}>
@@ -50,10 +54,18 @@ export default function IconAvatars() {
       <Avatar className={selected === "running" ? classes.selected : classes.green}>
         <Running onClick={() => setSelected("running")} />
       </Avatar>
-      <Avatar className={isMenuSelected() ? classes.selected : classes.green}>
-        <LongMenu setSelected={setSelected} />
+      <Avatar className={selected === "soccer" ? classes.selected : classes.green}>
+        <Soccer onClick={() => setSelected("soccer")} />
       </Avatar>
-      
+      <Avatar className={selected === "Calisthenics" ? classes.selected : classes.green}>
+        <Calisthenics onClick={() => setSelected("Calisthenics")} />
+      </Avatar>
+      <Avatar className={selected === "Volleyball" ? classes.selected : classes.green}>
+        <Volleyball onClick={() => setSelected("Volleyball")} />
+      </Avatar>
+      <Avatar className={selected === "Yoga" ? classes.selected : classes.green}>
+        <Yoga onClick={() => setSelected("Yoga")} />
+      </Avatar>
     </div>
   );
 }
@@ -61,3 +73,8 @@ export default function IconAvatars() {
 // c6f1e7
 // 72acb1
 // 59606d
+
+// Long Menu:
+{/* <Avatar className={isMenuSelected() ? classes.selected : classes.green}>
+  <LongMenu setSelected={setSelected} />
+</Avatar> */}

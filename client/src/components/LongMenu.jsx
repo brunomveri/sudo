@@ -6,8 +6,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const options = [
   'Yoga',
-  'Soccer',
-  'Beach Volleyball'
+  'Volleyball',
+  'Outdoor Gym',
+  'Calisthenics'
 ];
 
 const ITEM_HEIGHT = 48;
