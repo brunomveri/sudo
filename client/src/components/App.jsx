@@ -76,9 +76,10 @@ const App = () => {
   };
 
   const toggleFavouritesOnly = () => {
-
-    console.log('toggled');
-
+    setState({
+      ...state,
+      favouritesOnly: !state.favouritesOnly
+    });
   };
 
   const toggleDarkMode = function() {
