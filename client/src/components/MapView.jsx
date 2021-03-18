@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MapView(props) {
 
-  const { locations, mapPosition, darkMode, favouritesOnly } = props;
+  const { locations, mapPosition, darkMode, favouritesOnly, activitySelected } = props;
   const classes = useStyles();  
 
   const locateOptions = {
@@ -52,9 +52,13 @@ export default function MapView(props) {
   const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-  const filteredLocations = locations.filter(location => {
+  const filteredByFavourited = locations.filter(location => {
     return favouritesOnly ? location.favourited : true
   })
+
+  const filteredByActivity = filteredByFavourited.filter(location => {
+    return activitySelected == 0 ? true : location.activity_id == activitySelected
+  });
 
   return (
     <Map
@@ -63,7 +67,7 @@ export default function MapView(props) {
         attribution={darkMode ? attributionDark : attributionLight}
         url={darkMode ? urlDark : urlLight}
       />
-      { filteredLocations.map(item => (
+      { filteredByActivity.map(item => (
         <Marker
           position={[item.latitude, item.longitude]}
           icon={item.favourited ? redIcon : blueIcon}

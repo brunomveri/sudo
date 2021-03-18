@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Moon from '@material-ui/icons/Brightness2Outlined';
 import Sun from '@material-ui/icons/WbSunnyOutlined';
+import DarkModeToggle from "dark-mode-toggle-animation";
 
 const PurpleSwitch = withStyles({
   switchBase: {
@@ -35,9 +36,17 @@ export default function CustomizedSwitches(props) {
     <FormGroup>
       <div className="sunMoonSwitch">
         <Sun />
-        <FormControlLabel
+        {/* <FormControlLabel
           control={<PurpleSwitch checked={props.darkMode} onChange={() => props.toggleDarkMode()} />}
           label=""
+        /> */}
+        <DarkModeToggle 
+          // mode={darkMode ? "sun" : "moon"}
+          // onClick={onClick}
+          width="50px"
+          moonColor="#ffffff"
+          sunColor="#ffffff"
+          animationDuration={1}
         />
         <Moon />
       </div>
