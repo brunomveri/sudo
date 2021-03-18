@@ -25,6 +25,7 @@ import IconAvatars from './IconAvatars';
 import { green, pink } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DarkSwitch from './DarkModeSwitch';
+import LogoutButton from './LogoutButton'
 
 const drawerWidth = 240;
 
@@ -184,6 +185,7 @@ export default function PersistentDrawerLeft(props) {
             </Avatar>
           </div>
           <DarkSwitch className="darkSwitch" darkMode={props.darkMode} toggleDarkMode={props.toggleDarkMode} />
+          <LogoutButton />
         </Toolbar>
       </AppBar>
       {/* New sidebar */}
