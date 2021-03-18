@@ -102,6 +102,7 @@ const App = () => {
         locations={state.locations}
         mapPosition={state.mapPosition}
         darkMode={state.darkMode}
+        favouritesOnly={state.favouritesOnly}
       />
     </div>
   )

@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MapView(props) {
 
-  const { darkMode, locations, mapPosition } = props;
+  const { locations, mapPosition, darkMode, favouritesOnly } = props;
   const classes = useStyles();  
 
   const locateOptions = {
@@ -34,6 +34,10 @@ export default function MapView(props) {
   const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
+  const filteredLocations = locations.filter(location => {
+    return favouritesOnly ? location.favourited : true
+  })
+
   return (
     <Map
       center={mapPosition} zoom={13} className={classes.root}>
@@ -41,7 +45,7 @@ export default function MapView(props) {
         attribution={darkMode ? attributionDark : attributionLight}
         url={darkMode ? urlDark : urlLight}
       />
-      { locations.map(item => (
+      { filteredLocations.map(item => (
         <Marker position={[item.latitude, item.longitude]} key={item.id}>
          <Popup>
           <LocationPopup
