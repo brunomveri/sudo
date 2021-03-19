@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
+import Search from "react-leaflet-search";
 
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
@@ -20,16 +21,7 @@ export default function MapView(props) {
   const { locations, mapPosition, darkMode, favouritesOnly, activitySelected } = props;
   const classes = useStyles();  
 
-  const locateOptions = {
-    initialZoomLevel: 14,
-    flyTo: true,
-    setView: 'once',
-    icon: 'fa far fa-compass',
-    strings: {
-        title: 'Show your location'
-    },
-  }
-
+  // Map markers for favourited and unfavourited locations
   const redIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -47,18 +39,28 @@ export default function MapView(props) {
     shadowSize: [41, 41]
   });
 
+  // Attributions and URLs for light and dark maps
   const attributionDark = '© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
   const urlDark = "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
   const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
+  // Filter the dispalyed locations based on activity and favourited status
   const filteredByFavourited = locations.filter(location => {
     return favouritesOnly ? location.favourited : true
   })
-
   const filteredByActivity = filteredByFavourited.filter(location => {
     return activitySelected === 0 ? true : location.activity_id === activitySelected
   });
+
+  // Turns off autocomplete on the search input after 500ms
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const searchInput = document.querySelector(".search-control-active > input");
+       searchInput.setAttribute('autocomplete', 'off');
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Map
@@ -84,7 +86,26 @@ export default function MapView(props) {
          </Popup>
         </Marker>
       ))}
-      <LocateControl options={locateOptions} startDirectly/>
+      <LocateControl
+        startDirectly
+        options={{
+          initialZoomLevel: 14,
+          flyTo: true,
+          setView: 'once',
+          icon: 'fa far fa-compass',
+          strings: {
+              title: 'Show your location'
+          },
+        }}
+      />
+      <Search
+        position="topright"
+        inputPlaceholder="Where do you want to exercise?"
+        zoom={13}
+        showMarker={false}
+        openSearchOnLoad={true}
+        closeResultsOnClick={true}
+      />;
       <NewLocationButton />
     </Map>
   );
