@@ -24,7 +24,7 @@ code {
 }
 
 .nav-menu {
-  background-color: red;
+  background-color: #59606d;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -51,7 +51,7 @@ code {
 
 
 .nav-menu-items {
-  background-color: red;
+  background-color: #59606d;
   width: 100%;
   height: 80px;
   display: flex;
@@ -67,6 +67,7 @@ code {
 }
 
 .activityIcons {
+  background-color: #59606d;
   display: flex;
   align-items: center;
 }
@@ -87,4 +88,8 @@ code {
 .newMarkerButton {
   pointer-events: none;
   filter: 'brightness(0.5)'
+}
+
+.MyPins {
+  margin-right: 14px;
 }
