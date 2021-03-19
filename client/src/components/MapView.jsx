@@ -6,6 +6,7 @@ import L from 'leaflet';
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
 import LocationPopup from "./LocationPopup";
+import CreateLocationPopup from "./CreateLocationPopup"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -103,13 +104,19 @@ console.log("readyToMark:", readyToMark);
       {markers.map((position, idx) => 
         <Marker key={`marker-${idx}`} position={position}>
           <Popup>
-            <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+            <form>
+              <CreateLocationPopup
+              image={<input placeholder="Image URL"/>}
+              title={<input placeholder="Title"/>}
+              description={<input placeholder="Description"/>}
+            />
+            </form>
           </Popup>
         </Marker>
       )}
 
       <LocateControl options={locateOptions} startDirectly/>
-      <div onClick={() => setReadyToMark()}>
+      <div className="newMarkerButton" onClick={() => setReadyToMark()}>
         <NewLocationButton />
       </div>
     </Map>
