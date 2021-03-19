@@ -14,7 +14,9 @@ const App = () => {
     mapPosition: [49.2827, -123.1207],
     darkMode: false,
     favouritesOnly: false,
-    activitySelected: 0
+    activitySelected: 0,
+    markers: [],
+    readyToMark: false
   });
   
   useEffect(() => {
@@ -97,6 +99,27 @@ const App = () => {
     });
   };
   
+  const addMarker = (e) => {
+    if (state.readyToMark === true) {
+      const { markers } = state;
+      markers.push(e.latlng)
+      // console.log(e.latlng);
+      // console.log(markers);
+      setState({
+        ...state,
+        markers: state.markers,
+        readyToMark: false
+      });
+    }
+  }
+
+  const setReadyToMark = () => {
+    setState({
+      ...state,
+      readyToMark: !state.readyToMark
+    })
+  }
+
   return(
 
     <div className="content">
@@ -116,6 +139,10 @@ const App = () => {
         darkMode={state.darkMode}
         favouritesOnly={state.favouritesOnly}
         activitySelected={state.activitySelected}
+        addMarker={addMarker}
+        markers={state.markers}
+        readyToMark={state.readyToMark}
+        setReadyToMark={setReadyToMark}
       />
     </div>
   )

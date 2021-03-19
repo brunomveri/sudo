@@ -7,6 +7,7 @@ import Search from "react-leaflet-search";
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
 import LocationPopup from "./LocationPopup";
+import CreateLocationPopup from "./CreateLocationPopup"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +19,18 @@ const useStyles = makeStyles(theme => ({
 
 export default function MapView(props) {
 
-  const { locations, mapPosition, darkMode, favouritesOnly, activitySelected } = props;
+  const {
+    locations,
+    mapPosition,
+    darkMode,
+    favouritesOnly,
+    activitySelected,
+    markers,
+    addMarker,
+    readyToMark,
+    setReadyToMark
+  } = props;
+
   const classes = useStyles();  
 
   // Map markers for favourited and unfavourited locations
@@ -62,9 +74,15 @@ export default function MapView(props) {
     return () => clearTimeout(timer);
   }, []);
 
+  console.log("readyToMark:", readyToMark);
+
   return (
     <Map
-      center={mapPosition} zoom={13} className={classes.root}>
+      center={mapPosition}
+      zoom={13}
+      className={classes.root}
+      onClick={addMarker}
+    >
       <TileLayer
         attribution={darkMode ? attributionDark : attributionLight}
         url={darkMode ? urlDark : urlLight}
@@ -106,7 +124,25 @@ export default function MapView(props) {
         openSearchOnLoad={true}
         closeResultsOnClick={true}
       />;
-      <NewLocationButton />
+      {markers.map((position, idx) => 
+        <Marker key={`marker-${idx}`} position={position}>
+          <Popup>
+            <form>
+              <CreateLocationPopup
+              image={<input placeholder="Image URL"/>}
+              title={<input placeholder="Title"/>}
+              description={<input placeholder="Description"/>}
+            />
+            </form>
+          </Popup>
+        </Marker>
+      )}
+      <div 
+        className={readyToMark && "newMarkerButton"}
+        onClick={() => setReadyToMark()}
+      >
+        <NewLocationButton />
+      </div>
     </Map>
   );
 
