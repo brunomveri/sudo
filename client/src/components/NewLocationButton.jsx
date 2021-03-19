@@ -9,8 +9,8 @@ const useStyles = makeStyles(theme => ({
     'box-sizing': 'content-box',
     'border-radius': '2px',
     position: 'fixed',
-    right: '30px',
-    bottom: '30px',
+    right: '10px',
+    bottom: '26px',
     border: '2px solid rgba(0,0,0,0.2)',
   },
   button: {
