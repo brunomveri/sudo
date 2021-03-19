@@ -107,7 +107,8 @@ const App = () => {
       // console.log(markers);
       setState({
         ...state,
-        markers: state.markers
+        markers: state.markers,
+        readyToMark: false
       });
     }
   }

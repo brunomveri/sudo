@@ -100,7 +100,7 @@ console.log("readyToMark:", readyToMark);
         </Marker>
       ))}
 
-      {readyToMark && markers.map((position, idx) => 
+      {markers.map((position, idx) => 
         <Marker key={`marker-${idx}`} position={position}>
           <Popup>
             <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
