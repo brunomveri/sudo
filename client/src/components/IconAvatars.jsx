@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
   default: {
     color: '#fff',
     backgroundColor: "#59606d",
-    cursor: 'pointer'
+    cursor: 'pointer',
+    '&:hover': {
+        filter: 'brightness(0.5)'
+    }
   },
   selected: {
     color: '#fff',
