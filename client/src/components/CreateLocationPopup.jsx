@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Save from '@material-ui/icons/SaveAltOutlined';
 
 const useStyles = makeStyles({
   root: {
@@ -40,6 +41,7 @@ export default function LocationPopup(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
           </Typography>
+          <Save />
         </CardContent>
       </CardActionArea>
     </Card>
