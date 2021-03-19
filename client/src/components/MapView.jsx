@@ -14,6 +14,12 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "calc(100vh - 65px)",
     top: '65px'
+  },
+  newMark: {
+    width: "100%",
+    height: "calc(100vh - 65px)",
+    top: '65px',
+    cursor: 'url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png) 12 41, auto'
   }
 }));
 
@@ -33,23 +39,17 @@ export default function MapView(props) {
 
   const classes = useStyles();  
 
-  // Map markers for favourited and unfavourited locations
-  const redIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-  });
-  const blueIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-  });
+  // Return a new colored icon for the different types of markers
+  const markIcon = (color) => {
+    return new L.Icon({
+      iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    })
+  };
 
   // Attributions and URLs for light and dark maps
   const attributionDark = '© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -80,7 +80,7 @@ export default function MapView(props) {
     <Map
       center={mapPosition}
       zoom={13}
-      className={classes.root}
+      className={readyToMark ? classes.newMark : classes.root}
       onClick={addMarker}
     >
       <TileLayer
@@ -90,7 +90,7 @@ export default function MapView(props) {
       { filteredByActivity.map(item => (
         <Marker
           position={[item.latitude, item.longitude]}
-          icon={item.favourited ? redIcon : blueIcon}
+          icon={item.favourited ? markIcon('red') : markIcon('blue')}
           key={item.id}>
          <Popup>
           <LocationPopup
@@ -125,7 +125,11 @@ export default function MapView(props) {
         closeResultsOnClick={true}
       />;
       {markers.map((position, idx) => 
-        <Marker key={`marker-${idx}`} position={position}>
+        <Marker
+          key={`marker-${idx}`}
+          position={position}
+          icon={markIcon('green')}
+        >
           <Popup>
             <form>
               <CreateLocationPopup
