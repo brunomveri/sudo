@@ -126,14 +126,17 @@ const useStyles = makeStyles((theme) => ({
   pinkIcon: {
     color: theme.palette.getContrastText(pink[500]),
     backgroundColor: pink[500],
+    cursor: 'pointer'
   },
   defaultIcon: {
     color: '#fff',
     backgroundColor: "#59606d",
+    cursor: 'pointer'
   },
   selected: {
     color: '#fff',
-    backgroundColor: '#72acb1'
+    backgroundColor: '#72acb1',
+    cursor: 'pointer'
   }
 }));
 
