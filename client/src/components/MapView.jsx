@@ -131,13 +131,9 @@ export default function MapView(props) {
           icon={markIcon('green')}
         >
           <Popup>
-            <form>
               <CreateLocationPopup
-              image={<input placeholder="Image URL"/>}
-              title={<input placeholder="Title"/>}
-              description={<input placeholder="Description"/>}
-            />
-            </form>
+                position={position}
+              />
           </Popup>
         </Marker>
       )}

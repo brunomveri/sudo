@@ -39,7 +39,7 @@ export default function IconAvatars(props) {
 
   return (
     <div className={classes.root}>
-      <Avatar 
+      <Avatar
         className={activitySelected === 0 ? classes.selected : classes.default}
         onClick={() => setActivity(0)}
         id="0"
