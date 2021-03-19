@@ -103,13 +103,6 @@ basketball.locations.create!(
   image: "https://i.pinimg.com/originals/9a/fa/0a/9afa0aff5b7bb1e41a3b4de509a83921.jpg"
 )
 basketball.locations.create!(
-  title: 'Mt. Pleasant Basketball Court',
-  description: 'A basketball court in the middle of a lively park',
-  latitude: 49.257173,
-  longitude: -123.106222,
-  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt01amuo4lC0JB7WRWfGcNUYKtWYzFVQBAiQ&usqp=CAU"
-)
-basketball.locations.create!(
   title: 'John Laurie Park',
   description: 'A great place to play basketball',
   latitude: 51.11459608347758,
@@ -124,14 +117,6 @@ basketball.locations.create!(
   image: "https://i.cbc.ca/1.4844478.1538275973!/fileImage/httpImage/nash-family-court.png"
 )
 
-
-biking.locations.create!(
-  title: 'Bow River Pathway',
-  description: 'Take in the view of the city skyline with a ride along the Bow River. Begin this exuberant ride at the Peace Bridge and ride along the Bow River Pathway down to Edworthy Park.',
-  latitude: 51.46982,
-  longitude: -112.712341,
-  image: 'https://www.visitcalgary.com/sites/default/files/2021-01/biking_small_image_2020.jpg'
-)
 biking.locations.create!(
   title: 'Hunter Park',
   description: 'Well maintained windy mountain bike trail in North Van',
@@ -418,6 +403,74 @@ hiking.locations.create!(
   longitude: -123.036365,
   image: "https://i2.wp.com/www.awalkandalark.com/wp-content/uploads/2020/05/New-Brighton-Park.jpg?fit=640%2C480&ssl=1"
 )
+
+################# Calgary seeds beginning: #################
+
+calisthenics.locations.create!(
+  title:  'Blakiston Park',
+  description: 'Nice park to do calisthenics, outdoor fitness, and bodyweight exercises',
+  latitude: 51.08922491572865,
+  longitude: -114.12967597290914,
+  image: "https://hardbodyhang.com/sites/hardbodyhang.com/files/styles/1600x900/public/wien_donau3.jpg?itok=UUDflArJ"
+)
+basketball.locations.create!(
+  title:  'The Bounce Outdoor Basketball Court',
+  description: 'Baskestball court in the heart of East Village. Nice place to play some ball and make new friends.',
+  latitude: 51.045164915461186,
+  longitude: -114.05346092107382,
+  image: "https://lh5.googleusercontent.com/p/AF1QipOZPMWvXZ3-6GfbQnjmWbl4G-TijxYRJCUo4p1P=w408-h306-k-no"
+)
+tennis.locations.create!(
+  title:  'Elbow Park Tennins Court',
+  description: 'Cool park in the heart of Beltline where you can find two tennis courts. They are hard courts.',
+  latitude: 51.02405345834218,
+  longitude: -114.08133550711355,
+  image: "https://lh5.googleusercontent.com/p/AF1QipMhIwMShlese-KQwbwzWiGDg5jKwx8Q4gK9OG5M=w408-h306-k-no"
+)
+running.locations.create!(
+  title:  'Downtown: Marda Loop',
+  description: 'Begin on the corner of 26 Ave SW and 16 St SW and run south down 16 St SW until you reach 33 Ave SW. Turn right and follow that road until you get to 37th St SW (you’ll see AE Cross School on the corner). Take your final right turn onto 26 Ave SW and return to the start.',
+  latitude: 51.030396996067786,
+  longitude: -114.09966981679793,
+  image: "https://greatruns.com/wp-content/uploads/2016/07/marda-loop-CP.jpg"
+)
+running.locations.create!(
+  title:  'Bow and Elbow Rivers Pathways',
+  description: 'Many runners start at Eau Claire market downtown and head east through St. Patrick’s Island and north around the Calgary Zoo and past the TELUS Science Centre, or west towards Edworthy Park. Another option is to head north and run in Prince’s Island Park. There are paths on both sides of the Bow River, and bridges across the river at regular intervals, so it’s easy to create your own loops!',
+  latitude: 51.05410091379767,
+  longitude:  -114.06742781119343,
+  image: "https://greatruns.com/wp-content/uploads/2016/07/143-princes_island_park-1608-CP.jpg"
+)
+biking.locations.create!(
+  title: 'Fish Creek Park',
+  description: 'One of Vancouvers most famous outdoor activites. Cycle around Stanley Park right next to the ocean with a view of the mountains and the city.',
+  latitude: 50.91472632855595,
+  longitude: -114.01072678465687,
+  image: 'https://hikebiketravel.com/wp-content/uploads/2017/07/20160701_141936-02hs.jpg'
+)
+hiking.locations.create!(
+  title: 'Douglas Fir Trail (east)',
+  description: 'This is a beautiful trail nestled inside the city connected to the Edworthy Park. The trail is generally very quiet as people mostly enjoy in the park and river front.',
+  latitude: 51.05275127972196,
+  longitude: -114.13136264455589,
+  image: "https://www.10adventures.com/wp-content/uploads/2020/08/CAN-AB-Calgary-Hiking-03-Hiking-through-the-forest-along-Douglas-Fir-Trail-walking-in-Calgary-Alberta.jpg"
+)
+hiking.locations.create!(
+  title: 'Quarry Road Trail',
+  description: 'A hidden gem of Calgary! Great trail the heads up to a quiet viewpoint of downtown skyline. Once you are in the park, the city melts away. It is a nice hybrid of foothills nature with downtown backdrop.',
+  latitude: 51.04683767745514,
+  longitude: -114.11807381858762,
+  image: "https://www.10adventures.com/wp-content/uploads/2020/08/CAN-AB-Calgary-Hiking-03-Hiking-through-the-forest-along-Douglas-Fir-Trail-walking-in-Calgary-Alberta.jpg"
+)
+running.locations.create!(
+  title:  'Riverwalk',
+  description: 'Cool place to run and enjoy the view of Bow river',
+  latitude: 51.047445805292426,
+  longitude: -114.04737463545867,
+  image: "https://i.pinimg.com/originals/c3/da/cc/c3dacce5b9cca9c87a66ae7ad50f8e93.jpg"
+)
+
+################# Calgary seeds end. #################
 
 # Favourites Seeds
 
