@@ -26,6 +26,7 @@ import { green, pink } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DarkSwitch from './DarkModeSwitch';
 import LogoutButton from './LogoutButton'
+import MyPins from '@material-ui/icons/PersonPinCircleOutlined';
 
 const drawerWidth = 240;
 
@@ -203,6 +204,9 @@ export default function PersistentDrawerLeft(props) {
               activitySelected={activitySelected}
               setActivity={setActivity}
             />
+             <Avatar className="MyPins">
+              <MyPins />
+            </Avatar>
             <Avatar
               className={favouritesOnly ? classes.pinkIcon : classes.defaultIcon}
               onClick={() => toggleFavouritesOnly()}  
