@@ -17,7 +17,18 @@ const useStyles = makeStyles(theme => ({
 
 export default function MapView(props) {
 
-  const { locations, mapPosition, darkMode, favouritesOnly, activitySelected } = props;
+  const {
+    locations,
+    mapPosition,
+    darkMode,
+    favouritesOnly,
+    activitySelected,
+    markers,
+    addMarker,
+    readyToMark,
+    setReadyToMark
+  } = props;
+
   const classes = useStyles();  
 
   const locateOptions = {
@@ -59,10 +70,14 @@ export default function MapView(props) {
   const filteredByActivity = filteredByFavourited.filter(location => {
     return activitySelected == 0 ? true : location.activity_id == activitySelected
   });
-
+console.log("readyToMark:", readyToMark);
   return (
     <Map
-      center={mapPosition} zoom={13} className={classes.root}>
+      center={mapPosition}
+      zoom={13}
+      className={classes.root}
+      onClick={addMarker}
+    >
       <TileLayer
         attribution={darkMode ? attributionDark : attributionLight}
         url={darkMode ? urlDark : urlLight}
@@ -84,8 +99,19 @@ export default function MapView(props) {
          </Popup>
         </Marker>
       ))}
+
+      {readyToMark && markers.map((position, idx) => 
+        <Marker key={`marker-${idx}`} position={position}>
+          <Popup>
+            <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+          </Popup>
+        </Marker>
+      )}
+
       <LocateControl options={locateOptions} startDirectly/>
-      <NewLocationButton />
+      <div onClick={() => setReadyToMark()}>
+        <NewLocationButton />
+      </div>
     </Map>
   );
 
