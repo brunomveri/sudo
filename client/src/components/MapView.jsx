@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import Search from "react-leaflet-search";
+import TextField from '@material-ui/core/TextField';
 
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
@@ -129,9 +130,9 @@ export default function MapView(props) {
           <Popup>
             <form>
               <CreateLocationPopup
-              image={<input placeholder="Image URL"/>}
-              title={<input placeholder="Title"/>}
-              description={<input placeholder="Description"/>}
+              image={<TextField id="outlined-basic" label="Img" variant="outlined" size="small" />}
+              title={<TextField id="outlined-basic" label="Title" variant="outlined" size="small" />}
+              description={<TextField id="outlined-basic" label="Desc" variant="outlined" size="small" />}
             />
             </form>
           </Popup>

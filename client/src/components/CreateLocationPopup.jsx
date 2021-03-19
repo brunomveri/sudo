@@ -32,7 +32,7 @@ export default function LocationPopup(props) {
           title={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography variant="body2" color="textSecondary" component="p">
             {image}
           </Typography>
           <Typography gutterBottom variant="h5" component="h2">
