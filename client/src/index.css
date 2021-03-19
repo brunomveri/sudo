@@ -89,3 +89,7 @@ code {
   pointer-events: none;
   filter: 'brightness(0.5)'
 }
+
+.MyPins {
+  margin-right: 14px;
+}
