@@ -57,7 +57,7 @@ export default function MapView(props) {
   })
 
   const filteredByActivity = filteredByFavourited.filter(location => {
-    return activitySelected == 0 ? true : location.activity_id == activitySelected
+    return activitySelected === 0 ? true : location.activity_id === activitySelected
   });
 
   return (
