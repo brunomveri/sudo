@@ -114,9 +114,11 @@ console.log("readyToMark:", readyToMark);
           </Popup>
         </Marker>
       )}
-
       <LocateControl options={locateOptions} startDirectly/>
-      <div className="newMarkerButton" onClick={() => setReadyToMark()}>
+      <div 
+        className={readyToMark && "newMarkerButton"}
+        onClick={() => setReadyToMark()}
+      >
         <NewLocationButton />
       </div>
     </Map>
