@@ -130,11 +130,11 @@ const App = () => {
   const saveMarker = (id, title, description, image, activity, position) => {
 
     if (title === "") {
-      alert("Title cannot be blank");
+      addSnackbar('noTitle');
       return;
     }
     if (activity === "") {
-      alert("Select an activity type");
+      addSnackbar('noActivity');
       return;
     }
 
@@ -168,7 +168,7 @@ const App = () => {
       // set the success snackbar
       addSnackbar('save');
       
-    }).catch(err => addSnackbar('saveError'));
+    }).catch(() => addSnackbar('saveError'));
 
   }
 
@@ -198,6 +198,20 @@ const App = () => {
           severity: 'error'
         }
         break;
+        case 'noTitle':
+          snackbar = {
+            open: true,
+            message: 'Title cannot be blank!',
+            severity: 'error'
+          }
+          break;
+        case 'noActivity':
+          snackbar = {
+            open: true,
+            message: 'You must select an activity type!',
+            severity: 'error'
+          }
+          break;
       default:
         break;
     }
