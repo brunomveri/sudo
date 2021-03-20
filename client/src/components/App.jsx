@@ -140,7 +140,28 @@ const App = () => {
       user_id
     }
 
-    axios.post(`/api/locations`, newLocation);
+    axios.post(`/api/locations`, newLocation)
+    .then(response => {
+      
+      console.log(response.data)
+      
+      const location = response.data;
+
+      location.favourited = true;
+      location.toggleFavourited = toggleFavourited;
+
+      const locations = [
+        ...state.locations,
+      ];
+
+      locations.push(location)
+      
+      setState({
+        ...state,
+        locations
+      });
+
+    }).catch(err => console.log(err))
 
   }
 

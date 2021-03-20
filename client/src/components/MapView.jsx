@@ -59,14 +59,6 @@ export default function MapView(props) {
   const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-  // Filter the dispalyed locations based on activity and favourited status
-  const filteredByFavourited = locations.filter(location => {
-    return favouritesOnly ? location.favourited : true
-  })
-  const filteredByActivity = filteredByFavourited.filter(location => {
-    return activitySelected === 0 ? true : location.activity_id === activitySelected
-  });
-
   // Turns off autocomplete on the search input after 500ms
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,6 +67,15 @@ export default function MapView(props) {
     }, 500);
     return () => clearTimeout(timer);
   }, []);
+
+  // Filter the dispalyed locations based on activity and favourited status
+  const filteredByFavourited = locations.filter(location => {
+    return favouritesOnly ? location.favourited : true
+  })
+  const filteredByActivity = filteredByFavourited.filter(location => {
+    return activitySelected === 0 ? true : location.activity_id === activitySelected
+  });
+
 
   return (
     <Map

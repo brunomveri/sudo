@@ -9,7 +9,7 @@ class Api::LocationsController < ApplicationController
 
     @activity = Activity.find params[:activity_id]
 
-    location = @activity.locations.create!(
+    @location = @activity.locations.create!(
       title: params[:title],
       description: params[:description],
       latitude: params[:latitude],
@@ -19,8 +19,10 @@ class Api::LocationsController < ApplicationController
 
     @user = User.find(params[:user_id])
     @user.favourites.create!(
-      location_id: location.id
+      location_id: @location.id
     )
+
+    render json: @location
 
   end
 
