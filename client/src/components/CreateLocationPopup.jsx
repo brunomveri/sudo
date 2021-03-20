@@ -59,7 +59,8 @@ export default function LocationPopup(props) {
   const [image, setImage] = useState("");
   const [activity, setActivity] = useState("");
 
-  const validate = () => {
+  const save = (title, description, image, activity_id, position) => {
+
     if (title === "") {
       alert("Title cannot be blank");
       return;
@@ -68,12 +69,6 @@ export default function LocationPopup(props) {
       alert("Select an activity type");
       return;
     }
-
-    saveLocation(title, description, image, activity, position);
-
-  }
-
-  const saveLocation = (title, description, image, activity_id, position) => {
 
     const newLocation = {
       title,
@@ -84,7 +79,7 @@ export default function LocationPopup(props) {
       longitude: position.lng
     }
 
-    axios.post(`/api/locations`, newLocation)
+    axios.post(`/api/locations`, newLocation);
 
   }
 
@@ -171,7 +166,7 @@ export default function LocationPopup(props) {
           color="primary"
           disableElevation
           fullWidth
-          onClick={() => validate()}
+          onClick={() => save(title, description, image, activity, position)}
         >
           Save!
         </Button >
