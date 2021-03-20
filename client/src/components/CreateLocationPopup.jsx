@@ -54,7 +54,7 @@ const useStyles = makeStyles({
 
 export default function LocationPopup(props) {
 
-  const { position, saveMarker } = props;
+  const { position, saveMarker, id } = props;
   const classes = useStyles();
 
   const [title, setTitle] = useState("");
@@ -154,7 +154,7 @@ export default function LocationPopup(props) {
           color="primary"
           disableElevation
           fullWidth
-          onClick={() => saveMarker(title, description, image, activity, position)}
+          onClick={() => saveMarker(id, title, description, image, activity, position)}
         >
           Save!
         </Button >

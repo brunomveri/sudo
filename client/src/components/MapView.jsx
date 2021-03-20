@@ -128,6 +128,7 @@ export default function MapView(props) {
       {markers.map((position, idx) => 
         <Marker
           key={`marker-${idx}`}
+          id={idx}
           position={position}
           icon={markIcon('green')}
           onadd={(e) => {

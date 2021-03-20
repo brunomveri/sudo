@@ -119,7 +119,7 @@ const App = () => {
   }
 
   // Validate the form input, save to db if sound
-  const saveMarker = (title, description, image, activity, position) => {
+  const saveMarker = (id, title, description, image, activity, position) => {
 
     if (title === "") {
       alert("Title cannot be blank");
@@ -143,23 +143,19 @@ const App = () => {
     axios.post(`/api/locations`, newLocation)
     .then(response => {
       
-      console.log(response.data)
-      
-      const location = response.data;
+      // remove the marker with the form
+      const markers = [ ...state.markers ];
+      markers.splice(id, 1);
 
+      // get the new location data from the response + add it to locations
+      const location = response.data;
       location.favourited = true;
       location.toggleFavourited = toggleFavourited;
 
-      const locations = [
-        ...state.locations,
-      ];
-
+      const locations = [ ...state.locations ];
       locations.push(location)
       
-      setState({
-        ...state,
-        locations
-      });
+      setState({ ...state, markers, locations });
 
     }).catch(err => console.log(err))
 
@@ -167,7 +163,7 @@ const App = () => {
 
   return(
 
-    <div className="content">
+    <div className="appContent">
       <div className="activityIcons">
         <PersistentDrawerLeft 
           favouritesOnly={state.favouritesOnly}
