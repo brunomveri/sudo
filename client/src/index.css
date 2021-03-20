@@ -60,10 +60,8 @@ code {
   margin-top: 5em;
 }
 
-.content {
+.appContent {
   display: flex;
-
-
 }
 
 .activityIcons {

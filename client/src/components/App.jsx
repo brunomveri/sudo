@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+
 import PersistentDrawerLeft from "./PersistentDrawerLeft";
 import MapView from './MapView'
 
@@ -16,7 +19,12 @@ const App = () => {
     favouritesOnly: false,
     activitySelected: 0,
     markers: [],
-    readyToMark: false
+    readyToMark: false,
+    snackbar: {
+      open: false,
+      message: '',
+      severity: undefined
+    }
   });
   
   useEffect(() => {
@@ -99,20 +107,6 @@ const App = () => {
     });
   };
   
-  const addMarker = (e) => {
-    if (state.readyToMark === true) {
-      const { markers } = state;
-      markers.push(e.latlng)
-      console.log(e.latlng);
-      // console.log(markers);
-      setState({
-        ...state,
-        markers: state.markers,
-        readyToMark: false
-      });
-    }
-  }
-
   const setReadyToMark = () => {
     setState({
       ...state,
@@ -120,9 +114,117 @@ const App = () => {
     })
   }
 
+  const addMarker = (e) => {
+    if (state.readyToMark === true) {
+      const markers = [ ...state.markers ];
+      markers.push(e.latlng)
+      setState({
+        ...state,
+        markers,
+        readyToMark: false
+      });
+    }
+  }
+
+  // Validate the form input, save to db if sound
+  const saveMarker = (id, title, description, image, activity, position) => {
+
+    if (title === "") {
+      addSnackbar('noTitle');
+      return;
+    }
+    if (activity === "") {
+      addSnackbar('noActivity');
+      return;
+    }
+
+    const newLocation = {
+      title,
+      description,
+      image,
+      activity_id: activity,
+      latitude: position.lat,
+      longitude: position.lng,
+      user_id
+    }
+
+    axios.post(`/api/locations`, newLocation)
+    .then(response => {
+      
+      // remove the marker with the form
+      const markers = [ ...state.markers ];
+      markers.splice(id, 1);
+
+      // get the new location data from the response + add it to locations
+      const location = response.data;
+      location.favourited = true;
+      location.toggleFavourited = toggleFavourited;
+
+      const locations = [ ...state.locations ];
+      locations.push(location)
+      
+      setState({ ...state, markers, locations });
+      
+      // set the success snackbar
+      addSnackbar('save');
+      
+    }).catch(() => addSnackbar('saveError'));
+
+  }
+
+  const addSnackbar = (type) => {
+
+    let snackbar;
+
+    switch (type) {
+      case 'share':
+        snackbar = {
+          open: true,
+          message: 'Link copied to clipboard!',
+          severity: 'success'
+        }
+        break;
+      case 'save':
+        snackbar = {
+          open: true,
+          message: 'Location saved to map!',
+          severity: 'success'
+        }
+        break;   
+      case 'saveError':
+        snackbar = {
+          open: true,
+          message: 'Error saving map!',
+          severity: 'error'
+        }
+        break;
+        case 'noTitle':
+          snackbar = {
+            open: true,
+            message: 'Title cannot be blank!',
+            severity: 'error'
+          }
+          break;
+        case 'noActivity':
+          snackbar = {
+            open: true,
+            message: 'You must select an activity type!',
+            severity: 'error'
+          }
+          break;
+      default:
+        break;
+    }
+    
+    setState(current => {
+      return { ...current, snackbar }
+    });
+
+  }
+
   return(
 
-    <div className="content">
+    <div className="appContent">
       <div className="activityIcons">
         <PersistentDrawerLeft 
           favouritesOnly={state.favouritesOnly}
@@ -139,11 +241,22 @@ const App = () => {
         darkMode={state.darkMode}
         favouritesOnly={state.favouritesOnly}
         activitySelected={state.activitySelected}
-        addMarker={addMarker}
         markers={state.markers}
+        saveMarker={saveMarker}
+        addMarker={addMarker}
         readyToMark={state.readyToMark}
         setReadyToMark={setReadyToMark}
+        addSnackbar={addSnackbar}
       />
+      <Snackbar
+        open={state.snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setState({...state, snackbar: {open: false} })}
+      >
+        <Alert severity={state.snackbar.severity}>
+          {state.snackbar.message}
+        </Alert>
+      </Snackbar>
     </div>
   )
 

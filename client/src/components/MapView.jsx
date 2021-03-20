@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import Search from "react-leaflet-search";
-import TextField from '@material-ui/core/TextField';
 
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
@@ -34,8 +33,10 @@ export default function MapView(props) {
     activitySelected,
     markers,
     addMarker,
+    saveMarker,
     readyToMark,
-    setReadyToMark
+    setReadyToMark,
+    addSnackbar
   } = props;
 
   const classes = useStyles();  
@@ -58,14 +59,6 @@ export default function MapView(props) {
   const attributionLight = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   const urlLight = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-  // Filter the dispalyed locations based on activity and favourited status
-  const filteredByFavourited = locations.filter(location => {
-    return favouritesOnly ? location.favourited : true
-  })
-  const filteredByActivity = filteredByFavourited.filter(location => {
-    return activitySelected === 0 ? true : location.activity_id === activitySelected
-  });
-
   // Turns off autocomplete on the search input after 500ms
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,7 +68,14 @@ export default function MapView(props) {
     return () => clearTimeout(timer);
   }, []);
 
-  console.log("readyToMark:", readyToMark);
+  // Filter the dispalyed locations based on activity and favourited status
+  const filteredByFavourited = locations.filter(location => {
+    return favouritesOnly ? location.favourited : true
+  })
+  const filteredByActivity = filteredByFavourited.filter(location => {
+    return activitySelected === 0 ? true : location.activity_id === activitySelected
+  });
+
 
   return (
     <Map
@@ -101,6 +101,7 @@ export default function MapView(props) {
             description={item.description}
             favourited={item.favourited}
             toggleFavourited={item.toggleFavourited}
+            addSnackbar={addSnackbar}
           />
          </Popup>
         </Marker>
@@ -128,21 +129,26 @@ export default function MapView(props) {
       {markers.map((position, idx) => 
         <Marker
           key={`marker-${idx}`}
+          id={idx}
           position={position}
           icon={markIcon('green')}
+          onadd={(e) => {
+            e.target.openPopup();      
+          }}
         >
           <Popup>
               <CreateLocationPopup
                 position={position}
+                saveMarker={saveMarker}
               />
           </Popup>
         </Marker>
       )}
       <div 
-        className={readyToMark && "newMarkerButton"}
+        className={readyToMark ? "newMarkerButton" : undefined}
         onClick={() => setReadyToMark()}
       >
-        <NewLocationButton />
+        <NewLocationButton readyToMark={readyToMark} />
       </div>
     </Map>
   );

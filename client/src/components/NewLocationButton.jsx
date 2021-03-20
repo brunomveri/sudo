@@ -23,12 +23,18 @@ const useStyles = makeStyles(theme => ({
   },
   locationIcon: {
     width: '36px',
-    height: '36px'
+    height: '36px',
+  },
+  markingLocationIcon: {
+    width: '36px',
+    height: '36px',
+    fill: '#2074b6'
   }
 }));
 
 export default function NewLocationButton(props) {
 
+  const { readyToMark } = props;
   const classes = useStyles();
 
   return (
@@ -37,7 +43,9 @@ export default function NewLocationButton(props) {
         className={classes.button}
         disableRipple
       >
-        <AddLocationIcon className={classes.locationIcon} />
+        <AddLocationIcon
+          className={readyToMark ? classes.markingLocationIcon : classes.locationIcon}
+        />
       </Button>
     </div>
   )
