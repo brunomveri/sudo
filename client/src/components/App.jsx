@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+
 import PersistentDrawerLeft from "./PersistentDrawerLeft";
 import MapView from './MapView'
 
@@ -16,7 +19,10 @@ const App = () => {
     favouritesOnly: false,
     activitySelected: 0,
     markers: [],
-    readyToMark: false
+    readyToMark: false,
+    snackbar: {
+      open: true
+    }
   });
   
   useEffect(() => {
@@ -186,6 +192,15 @@ const App = () => {
         readyToMark={state.readyToMark}
         setReadyToMark={setReadyToMark}
       />
+      <Snackbar
+        open={state.snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setState({...state, snackbar: {open: false} })}
+      >
+        <Alert severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
     </div>
   )
 

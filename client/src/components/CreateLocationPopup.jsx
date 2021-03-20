@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-
-import Avatar from '@material-ui/core/Avatar';
+import { Typography, Button, Card, Avatar } from '@material-ui/core';
 import Basketball from '@material-ui/icons/SportsBasketball';
 import Bike from '@material-ui/icons/DirectionsBike';
 import Running from '@material-ui/icons/DirectionsRun';

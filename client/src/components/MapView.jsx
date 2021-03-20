@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import Search from "react-leaflet-search";
-import TextField from '@material-ui/core/TextField';
 
 import LocateControl from './LocateControl';
 import NewLocationButton from './NewLocationButton';
