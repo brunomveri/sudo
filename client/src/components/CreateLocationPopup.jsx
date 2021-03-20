@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import axios from 'axios';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -46,12 +45,16 @@ const useStyles = makeStyles({
     color: '#fff',
     backgroundColor: '#72acb1',
     cursor: 'pointer'
+  },
+  textArea: {
+    resize: 'none',
+    width: '100%'
   }
 });
 
 export default function LocationPopup(props) {
 
-  const { position } = props;
+  const { position, saveMarker } = props;
   const classes = useStyles();
 
   const [title, setTitle] = useState("");
@@ -59,29 +62,11 @@ export default function LocationPopup(props) {
   const [image, setImage] = useState("");
   const [activity, setActivity] = useState("");
 
-  const save = (title, description, image, activity_id, position) => {
-
-    if (title === "") {
-      alert("Title cannot be blank");
-      return;
-    }
-    if (activity === "") {
-      alert("Select an activity type");
-      return;
-    }
-
-    const newLocation = {
-      title,
-      description,
-      image,
-      activity_id,
-      latitude: position.lat,
-      longitude: position.lng
-    }
-
-    axios.post(`/api/locations`, newLocation);
-
-  }
+  // Focus on the title input field on component mount
+  const titleInput = useRef(null);
+  useEffect(() => {
+    titleInput.current.focus();
+  }, []);
 
   return (
     <Card className={classes.root}>
@@ -94,10 +79,13 @@ export default function LocationPopup(props) {
             placeholder="Title"
             value={title}
             onChange={event => setTitle(event.target.value)}
+            ref={titleInput}
           />
         </Typography>
         <Typography gutterBottom variant="h5">
-          <input
+          <textarea
+            className={classes.textArea}
+            rows="4"
             placeholder="Description"
             value={description}
             onChange={event => setDescription(event.target.value)}
@@ -166,7 +154,7 @@ export default function LocationPopup(props) {
           color="primary"
           disableElevation
           fullWidth
-          onClick={() => save(title, description, image, activity, position)}
+          onClick={() => saveMarker(title, description, image, activity, position)}
         >
           Save!
         </Button >

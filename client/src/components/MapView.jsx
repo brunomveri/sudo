@@ -34,6 +34,7 @@ export default function MapView(props) {
     activitySelected,
     markers,
     addMarker,
+    saveMarker,
     readyToMark,
     setReadyToMark
   } = props;
@@ -129,18 +130,19 @@ export default function MapView(props) {
           position={position}
           icon={markIcon('green')}
           onadd={(e) => {
-            e.target.openPopup();
+            e.target.openPopup();      
           }}
         >
           <Popup>
               <CreateLocationPopup
                 position={position}
+                saveMarker={saveMarker}
               />
           </Popup>
         </Marker>
       )}
       <div 
-        className={readyToMark && "newMarkerButton"}
+        className={readyToMark ? "newMarkerButton" : undefined}
         onClick={() => setReadyToMark()}
       >
         <NewLocationButton readyToMark={readyToMark} />

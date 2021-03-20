@@ -99,6 +99,13 @@ const App = () => {
     });
   };
   
+  const setReadyToMark = () => {
+    setState({
+      ...state,
+      readyToMark: !state.readyToMark
+    })
+  }
+
   const addMarker = (e) => {
     if (state.readyToMark === true) {
       const { markers } = state;
@@ -111,11 +118,30 @@ const App = () => {
     }
   }
 
-  const setReadyToMark = () => {
-    setState({
-      ...state,
-      readyToMark: !state.readyToMark
-    })
+  // Validate the form input, save to db if sound
+  const saveMarker = (title, description, image, activity, position) => {
+
+    if (title === "") {
+      alert("Title cannot be blank");
+      return;
+    }
+    if (activity === "") {
+      alert("Select an activity type");
+      return;
+    }
+
+    const newLocation = {
+      title,
+      description,
+      image,
+      activity_id: activity,
+      latitude: position.lat,
+      longitude: position.lng,
+      user_id
+    }
+
+    axios.post(`/api/locations`, newLocation);
+
   }
 
   return(
@@ -137,8 +163,9 @@ const App = () => {
         darkMode={state.darkMode}
         favouritesOnly={state.favouritesOnly}
         activitySelected={state.activitySelected}
-        addMarker={addMarker}
         markers={state.markers}
+        saveMarker={saveMarker}
+        addMarker={addMarker}
         readyToMark={state.readyToMark}
         setReadyToMark={setReadyToMark}
       />
