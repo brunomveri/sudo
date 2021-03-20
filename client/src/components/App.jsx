@@ -21,7 +21,9 @@ const App = () => {
     markers: [],
     readyToMark: false,
     snackbar: {
-      open: true
+      open: false,
+      message: '',
+      severity: undefined
     }
   });
   
@@ -114,11 +116,11 @@ const App = () => {
 
   const addMarker = (e) => {
     if (state.readyToMark === true) {
-      const { markers } = state;
+      const markers = [ ...state.markers ];
       markers.push(e.latlng)
       setState({
         ...state,
-        markers: state.markers,
+        markers,
         readyToMark: false
       });
     }
@@ -162,8 +164,47 @@ const App = () => {
       locations.push(location)
       
       setState({ ...state, markers, locations });
+      
+      // set the success snackbar
+      addSnackbar('save');
+      
+    }).catch(err => addSnackbar('saveError'));
 
-    }).catch(err => console.log(err))
+  }
+
+  const addSnackbar = (type) => {
+
+    let snackbar;
+
+    switch (type) {
+      case 'share':
+        snackbar = {
+          open: true,
+          message: 'Link copied to clipboard!',
+          severity: 'success'
+        }
+        break;
+      case 'save':
+        snackbar = {
+          open: true,
+          message: 'Location saved to map!',
+          severity: 'success'
+        }
+        break;   
+      case 'saveError':
+        snackbar = {
+          open: true,
+          message: 'Error saving map!',
+          severity: 'error'
+        }
+        break;
+      default:
+        break;
+    }
+    
+    setState(current => {
+      return { ...current, snackbar }
+    });
 
   }
 
@@ -191,14 +232,15 @@ const App = () => {
         addMarker={addMarker}
         readyToMark={state.readyToMark}
         setReadyToMark={setReadyToMark}
+        addSnackbar={addSnackbar}
       />
       <Snackbar
         open={state.snackbar.open}
         autoHideDuration={3000}
         onClose={() => setState({...state, snackbar: {open: false} })}
       >
-        <Alert severity="success">
-          This is a success message!
+        <Alert severity={state.snackbar.severity}>
+          {state.snackbar.message}
         </Alert>
       </Snackbar>
     </div>

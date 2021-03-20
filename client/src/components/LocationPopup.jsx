@@ -25,7 +25,16 @@ const useStyles = makeStyles({
 
 export default function LocationPopup(props) {
 
-  const { id, title, image, description, favourited, toggleFavourited } = props;
+  const {
+    id, 
+    title, 
+    image, 
+    description, 
+    favourited, 
+    toggleFavourited, 
+    addSnackbar 
+  } = props;
+  
   const classes = useStyles();
 
   return (
@@ -53,7 +62,10 @@ export default function LocationPopup(props) {
         >
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton
+          aria-label="share"
+          onClick={() => addSnackbar('share')}  
+        >
           <ShareIcon />
         </IconButton>
       </CardActions>

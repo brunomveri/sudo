@@ -35,7 +35,8 @@ export default function MapView(props) {
     addMarker,
     saveMarker,
     readyToMark,
-    setReadyToMark
+    setReadyToMark,
+    addSnackbar
   } = props;
 
   const classes = useStyles();  
@@ -100,6 +101,7 @@ export default function MapView(props) {
             description={item.description}
             favourited={item.favourited}
             toggleFavourited={item.toggleFavourited}
+            addSnackbar={addSnackbar}
           />
          </Popup>
         </Marker>
