@@ -67,8 +67,13 @@ code {
 .activityIcons {
   background-color: #59606d;
   display: flex;
-  align-items: center;
+  align-items: end;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 80px; 
+  /* find a better way to do this than margin-top */
 }
+
 
 .makeStyles-root-18 {
   display: flex;
@@ -90,4 +95,10 @@ code {
 
 .MyPins {
   margin-right: 14px;
+}
+
+.LoggedInUser {
+  display: flex;
+  justify-content: center;
+
 }
