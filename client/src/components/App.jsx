@@ -103,8 +103,6 @@ const App = () => {
     if (state.readyToMark === true) {
       const { markers } = state;
       markers.push(e.latlng)
-      console.log(e.latlng);
-      // console.log(markers);
       setState({
         ...state,
         markers: state.markers,

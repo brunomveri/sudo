@@ -75,8 +75,6 @@ export default function MapView(props) {
     return () => clearTimeout(timer);
   }, []);
 
-  console.log("readyToMark:", readyToMark);
-
   return (
     <Map
       center={mapPosition}
@@ -130,6 +128,9 @@ export default function MapView(props) {
           key={`marker-${idx}`}
           position={position}
           icon={markIcon('green')}
+          onadd={(e) => {
+            e.target.openPopup();
+          }}
         >
           <Popup>
               <CreateLocationPopup
