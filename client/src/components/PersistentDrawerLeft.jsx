@@ -27,6 +27,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import DarkSwitch from './DarkModeSwitch';
 import LogoutButton from './LogoutButton'
 import MyPins from '@material-ui/icons/PersonPinCircleOutlined';
+import ProfileAvatar from './ProfileAvatar';
 
 const drawerWidth = 240;
 
@@ -204,9 +205,6 @@ export default function PersistentDrawerLeft(props) {
               activitySelected={activitySelected}
               setActivity={setActivity}
             />
-             <Avatar className="MyPins">
-              <MyPins />
-            </Avatar>
             <Avatar
               className={favouritesOnly ? classes.pinkIcon : classes.defaultIcon}
               onClick={() => toggleFavouritesOnly()}  
@@ -224,10 +222,29 @@ export default function PersistentDrawerLeft(props) {
       {/* New sidebar */}
       {/* <div className='sidebarDiv'> */}
         {/* <nav className={sidebar ? 'nav-menu' : 'nav-menu-active'}> */}
-        <nav className={sidebar && 'nav-menu'}>
+        <nav className={sidebar && 'nav-menu'} fullWidth>
+          <ProfileAvatar/>
+          <Typography variant="h6">
+          <h5 className="LoggedInUser">Logged in as John Smith</h5>
+          </Typography>
           <ul className='nav-menu-items'>
             <li className='navbar-toggle'>
             <h1>Now we have a sidebar!</h1>
+            <h3>Test</h3>
+            <h3>Test</h3>
+            <h3>Test</h3>
+            </li>
+          </ul>
+          <br />
+          <br />
+          <ul>  
+            <li>
+            <h5>Current Location: Vancouver</h5>
+            </li>
+          </ul>
+          <ul>  
+            <li>
+            <h5>Settings</h5>
             </li>
           </ul>
         </nav>
