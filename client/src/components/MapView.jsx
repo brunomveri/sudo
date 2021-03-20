@@ -142,7 +142,7 @@ export default function MapView(props) {
         className={readyToMark && "newMarkerButton"}
         onClick={() => setReadyToMark()}
       >
-        <NewLocationButton />
+        <NewLocationButton readyToMark={readyToMark} />
       </div>
     </Map>
   );
