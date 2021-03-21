@@ -33,16 +33,6 @@ code {
   top: 0;
 }
 
-.nav-menu-items {
-  background-color: #59606d;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  margin-top: 5em;
-}
-
 .appContent {
   display: flex;
 }
@@ -92,6 +82,22 @@ code {
   margin-top: 20px;
   margin: 1em;
   border-radius: 10px;
-  opacity: 0.9;
   box-shadow: cornsilk;
+  border: white inset thin;
+}
+
+.ulContainer{
+  list-style-type: none;
+}
+
+.profileAvatar {
+  margin-top: 10px;
+}
+
+.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiPaper-elevation16 {
+  top: 65px;
+}
+
+.makeStyles-root-34 {
+  margin-top: 35px;
 }

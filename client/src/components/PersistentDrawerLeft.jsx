@@ -28,12 +28,16 @@ import DarkSwitch from './DarkModeSwitch';
 import LogoutButton from './LogoutButton'
 import MyPins from '@material-ui/icons/PersonPinCircleOutlined';
 import ProfileAvatar from './ProfileAvatar';
+import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import TemporaryDrawer from './TemporaryDrawer';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    "z-index": 1500
   },
   appBar: {
     height: '65px',
@@ -145,8 +149,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     backgroundColor: '#72acb1',
     cursor: 'pointer'
+  },
+  test: {
+    fontFamily: 'Comfortaa',
+    fontSize: 15
   }
 }));
+
 
 export default function PersistentDrawerLeft(props) {
 
@@ -185,7 +194,7 @@ export default function PersistentDrawerLeft(props) {
         })}
       >
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             // onClick={handleDrawerOpen}
@@ -194,7 +203,8 @@ export default function PersistentDrawerLeft(props) {
             className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
+          <TemporaryDrawer />
           <img src={require("../images/logo_transparent_v3.png")} height="40px" width="40px" alt="Sudo"></img>
           <Typography variant="h6">
             Sudo
@@ -219,34 +229,35 @@ export default function PersistentDrawerLeft(props) {
           <LogoutButton />
         </Toolbar>
       </AppBar>
-        <nav className={sidebar && 'nav-menu'} fullWidth>
+        {/* <nav className={sidebar && 'nav-menu'} fullWidth>
           <div className="loginContainer">
-            <ProfileAvatar/>
+            <ProfileAvatar />
             <Typography variant="h6">
-            <h5 className="LoggedInUser">Logged in as John Smith</h5>
+            <h5 className="LoggedInUser">John Smith</h5>
             </Typography>
-            {/* <ul className='nav-menu-items'>
-              <li className='navbar-toggle'>
-              <h1>Now we have a sidebar!</h1>
-              <h3>Test</h3>
-              <h3>Test</h3>
-              <h3>Test</h3>
-              </li>
-            </ul> */}
-            <br />
-            <br />
-            <ul>  
-              <li>
-              <h5>Current Location: Vancouver</h5>
-              </li>
-            </ul>
-            <ul>  
-              <li>
-              <h5>Settings</h5>
-              </li>
-            </ul>
+            <List>
+          <Divider />
+          <ListItem button key={"Location: Vancouver"}>
+            <ListItemIcon><PersonPinCircleOutlinedIcon /></ListItemIcon>
+            <Typography variant="h6">
+              <p className={classes.test}>Vancouver</p>
+            </Typography>
+          </ListItem>
+          <Divider />
+          <ListItem button key={"Settings"}>
+            <ListItemIcon><SettingsOutlinedIcon /></ListItemIcon>
+            <p className={classes.test}>Settings</p>
+          </ListItem>
+          <Divider />
+          <ListItem button key={"My Cities"}>
+            <ListItemIcon><SettingsOutlinedIcon /></ListItemIcon>
+            <p className={classes.test}>My Cities</p>
+          </ListItem>
+        </List>
+        <Divider />
           </div>
-        </nav>
+        </nav> */}
+        
     </div>
   );
 }
