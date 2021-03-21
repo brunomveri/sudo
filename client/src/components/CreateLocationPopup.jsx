@@ -10,7 +10,7 @@ import Calisthenics from '@material-ui/icons/FitnessCenterOutlined';
 import Volleyball from '@material-ui/icons/SportsVolleyballOutlined';
 import Hiking from '@material-ui/icons/FilterHdrOutlined';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: '345px',
     padding: '20px'
@@ -45,8 +45,15 @@ const useStyles = makeStyles({
   textArea: {
     resize: 'none',
     width: '100%'
-  }
-});
+  },
+  button: {
+    backgroundColor: '#72acb1',
+    '&:hover': {
+      backgroundColor: '#72acb1',
+      filter: 'brightness(0.7)',
+    }
+  } 
+}));
 
 export default function LocationPopup(props) {
 
@@ -148,11 +155,12 @@ export default function LocationPopup(props) {
         <Button
           variant="contained"
           color="primary"
+          className={classes.button}
           disableElevation
           fullWidth
           onClick={() => saveMarker(id, title, description, image, activity, position)}
         >
-          Save!
+          Save
         </Button >
       </form>
     </Card>
