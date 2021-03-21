@@ -15,7 +15,7 @@ import ProfileAvatar from './ProfileAvatar';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
-
+import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
 
 
 const useStyles = makeStyles({
@@ -33,10 +33,7 @@ const useStyles = makeStyles({
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -58,7 +55,7 @@ export default function TemporaryDrawer() {
     >
        <ProfileAvatar className="profileAvatar" />
             <Typography variant="h6">
-            <h5 className="LoggedInUser">John Smith</h5>
+              <h5 className="LoggedInUser">John Smith</h5>
             </Typography>
             <List>
           <Divider />
@@ -73,7 +70,7 @@ export default function TemporaryDrawer() {
           </ListItem>
           <Divider />
           <ListItem button key={"My Cities"}>
-            <ListItemIcon><SettingsOutlinedIcon /></ListItemIcon>
+            <ListItemIcon><LocationCityOutlinedIcon /></ListItemIcon>
             <p className={classes.test}>My Cities</p>
           </ListItem>
         </List>
@@ -85,7 +82,7 @@ export default function TemporaryDrawer() {
     <div className={classes.root}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-            <MenuOutlinedIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuOutlinedIcon>
+            <MenuOutlinedIcon onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
