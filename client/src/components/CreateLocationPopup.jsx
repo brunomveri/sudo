@@ -46,7 +46,8 @@ const useStyles = makeStyles(theme => ({
     resize: 'none',
     width: '100%',
     fontFamily: 'inherit',
-    marginBottom: '7px'
+    marginBottom: '7px',
+    outline: 'default'
   },
   inputBox: {
     width: '100%',
