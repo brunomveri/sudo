@@ -12,7 +12,7 @@ import Hiking from '@material-ui/icons/FilterHdrOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: '345px',
+    width: '250px',
     padding: '20px'
   },
   default: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '100%',
     'justify-content': 'space-between',
-    'margin-bottom': '0.5em',
+    'margin-bottom': '10px',
     '& > *': {
       width: '25px',
       height: '25px',
@@ -44,7 +44,13 @@ const useStyles = makeStyles(theme => ({
   },
   textArea: {
     resize: 'none',
-    width: '100%'
+    width: '100%',
+    fontFamily: 'inherit',
+    marginBottom: '7px'
+  },
+  inputBox: {
+    width: '100%',
+    marginBottom: '10px'
   },
   button: {
     backgroundColor: '#72acb1',
@@ -52,7 +58,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: '#72acb1',
       filter: 'brightness(0.7)',
     }
-  } 
+  },
 }));
 
 export default function LocationPopup(props) {
@@ -74,33 +80,29 @@ export default function LocationPopup(props) {
   return (
     <Card className={classes.root}>
       <form autoComplete="off" onSubmit={event => event.preventDefault()}>
-        <Typography gutterBottom variant="subtitle1">
-          Save a new location!
+        <Typography gutterBottom variant="h5" align="center">
+          New Location
         </Typography>
-        <Typography gutterBottom variant="h5">
-          <input
-            placeholder="Title"
-            value={title}
-            onChange={event => setTitle(event.target.value)}
-            ref={titleInput}
-          />
-        </Typography>
-        <Typography gutterBottom variant="h5">
-          <textarea
-            className={classes.textArea}
-            rows="4"
-            placeholder="Description"
-            value={description}
-            onChange={event => setDescription(event.target.value)}
-          />
-        </Typography>
-        <Typography gutterBottom variant="h5">
-          <input
-            placeholder="Image URL"
-            value={image}
-            onChange={event => setImage(event.target.value)}
-          />
-        </Typography>
+        <input
+          className={classes.inputBox}
+          placeholder="Title"
+          value={title}
+          onChange={event => setTitle(event.target.value)}
+          ref={titleInput}
+        />
+        <textarea
+          className={classes.textArea}
+          rows="4"
+          placeholder="Description"
+          value={description}
+          onChange={event => setDescription(event.target.value)}
+        />
+        <input
+          className={classes.inputBox}
+          placeholder="Image URL"
+          value={image}
+          onChange={event => setImage(event.target.value)}
+        />
         <div className={classes.activityIcons}>
           <Avatar 
             className={activity === 1 ? classes.selected : classes.default}

@@ -42,8 +42,6 @@ export default function LocationPopup(props) {
   
   const classes = useStyles();
 
-  console.log(image);
-
   return (
     <Card className={classes.root}>
       <CardMedia
