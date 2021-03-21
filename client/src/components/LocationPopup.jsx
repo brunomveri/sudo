@@ -28,10 +28,22 @@ const useStyles = makeStyles({
   }
 });
 
+const openDirections = (position) => {
+  
+  const [latitude, longitude] = position;
+
+  const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
+
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+  if (newWindow) newWindow.opener = null;
+
+}
+
 export default function LocationPopup(props) {
 
   const {
-    id, 
+    id,
+    position,
     title, 
     image, 
     description, 
@@ -73,7 +85,7 @@ export default function LocationPopup(props) {
         </IconButton>
         <IconButton
           aria-label="directions"
-          onClick={() => addSnackbar('share')}  
+          onClick={() => openDirections(position)}  
         >
           <DirectionsIcon />
         </IconButton>
