@@ -172,48 +172,57 @@ const App = () => {
       
     }).catch(() => addSnackbar('saveError'));
 
-  }
+  };
+
+  const deleteLocation = (id) => {
+
+    // delete the location in the db
+    axios.delete(`/api/locations/${id}`)
+    .then(() => {
+
+      // find the location's index in locations + remove it
+      const locations = [ ...state.locations ]
+      const index = locations.findIndex(loc => loc.id === id);
+      locations.splice(index, 1);
+
+      setState({ ...state, locations });
+
+      // set the success snackbar
+      addSnackbar('delete');
+
+    })
+
+  };
 
   const addSnackbar = (type) => {
 
-    let snackbar;
+    const snackbar = {open: true};
 
     switch (type) {
       case 'share':
-        snackbar = {
-          open: true,
-          message: 'Link copied to clipboard!',
-          severity: 'success'
-        }
+        snackbar.message = 'Link copied to clipboard!';
+        snackbar.severity = 'success';
         break;
       case 'save':
-        snackbar = {
-          open: true,
-          message: 'Location saved to map!',
-          severity: 'success'
-        }
+        snackbar.message = 'Location saved to map!';
+        snackbar.severity = 'success';
         break;   
-      case 'saveError':
-        snackbar = {
-          open: true,
-          message: 'Error saving map!',
-          severity: 'error'
-        }
+      case 'delete':
+        snackbar.message = 'Location deleted!';
+        snackbar.severity = 'success';
         break;
-        case 'noTitle':
-          snackbar = {
-            open: true,
-            message: 'Title cannot be blank!',
-            severity: 'error'
-          }
-          break;
-        case 'noActivity':
-          snackbar = {
-            open: true,
-            message: 'You must select an activity type!',
-            severity: 'error'
-          }
-          break;
+      case 'saveError':
+        snackbar.message = 'Error saving map!';
+        snackbar.severity = 'error';
+        break;
+      case 'noTitle':
+        snackbar.message = 'Title cannot be blank!';
+        snackbar.severity = 'error';
+        break;
+      case 'noActivity':
+        snackbar.message = 'You must select an activity type!';
+        snackbar.severity = 'error';
+        break;
       default:
         break;
     }
@@ -222,7 +231,7 @@ const App = () => {
       return { ...current, snackbar }
     });
 
-  }
+  };
 
   return(
 
@@ -248,6 +257,7 @@ const App = () => {
         addMarker={addMarker}
         readyToMark={state.readyToMark}
         setReadyToMark={setReadyToMark}
+        deleteLocation={deleteLocation}
         addSnackbar={addSnackbar}
       />
       <Snackbar

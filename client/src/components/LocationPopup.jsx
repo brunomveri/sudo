@@ -32,7 +32,7 @@ const openDirections = (position) => {
   
   const [latitude, longitude] = position;
 
-  const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
+  const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&travelmode=walking`;
 
   const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
   if (newWindow) newWindow.opener = null;
@@ -48,7 +48,8 @@ export default function LocationPopup(props) {
     image, 
     description, 
     favourited, 
-    toggleFavourited, 
+    toggleFavourited,
+    deleteLocation,
     addSnackbar
   } = props;
   
@@ -91,7 +92,7 @@ export default function LocationPopup(props) {
         </IconButton>
         <IconButton
           aria-label="delete"
-          onClick={() => addSnackbar('share')}  
+          onClick={() => deleteLocation(id)}  
         >
           <DeleteIcon />
         </IconButton>
