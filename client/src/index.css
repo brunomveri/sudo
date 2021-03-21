@@ -86,10 +86,6 @@ code {
   border: white inset thin;
 }
 
-.ulContainer{
-  list-style-type: none;
-}
-
 .profileAvatar {
   margin-top: 10px;
 }
@@ -100,4 +96,8 @@ code {
 
 .makeStyles-root-34 {
   margin-top: 35px;
+}
+
+.sudoLogo {
+  margin-left: 20px;
 }

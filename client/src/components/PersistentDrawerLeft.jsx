@@ -205,7 +205,7 @@ export default function PersistentDrawerLeft(props) {
             <MenuIcon />
           </IconButton> */}
           <TemporaryDrawer />
-          <img src={require("../images/logo_transparent_v3.png")} height="40px" width="40px" alt="Sudo"></img>
+          <img src={require("../images/logo_transparent_v3.png")} className="sudoLogo" height="40px" width="40px" alt="Sudo"></img>
           <Typography variant="h6">
             Sudo
           </Typography>

@@ -14,15 +14,16 @@ import Typography from '@material-ui/core/Typography';
 import ProfileAvatar from './ProfileAvatar';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
+import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
 
 
 
 const useStyles = makeStyles({
   root: {
+    top: 65
   },
   list: {
-    width: 250,
-    top: "65px"
+    width: 250
   },
   fullList: {
     width: 'auto',
@@ -55,7 +56,7 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-       <ProfileAvatar />
+       <ProfileAvatar className="profileAvatar" />
             <Typography variant="h6">
             <h5 className="LoggedInUser">John Smith</h5>
             </Typography>
@@ -84,7 +85,7 @@ export default function TemporaryDrawer() {
     <div className={classes.root}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <MenuOutlinedIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuOutlinedIcon>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
