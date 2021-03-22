@@ -96,6 +96,7 @@ export default function MapView(props) {
          <Popup>
           <LocationPopup
             id={item.id}
+            position={[item.latitude, item.longitude]}
             image={item.image}
             title={item.title}
             description={item.description}

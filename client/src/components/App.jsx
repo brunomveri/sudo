@@ -64,15 +64,17 @@ const App = () => {
 
     setState(current => {
 
-      const currentlyFavourite = current.locations[id - 1].favourited;
+      const index = current.locations.findIndex(loc => loc.id === id);
+
+      const currentlyFavourite = current.locations[index].favourited;
   
       const location = {
-        ...current.locations[id - 1],
+        ...current.locations[index],
         favourited: !currentlyFavourite
       };
 
       const locations = current.locations;
-      locations[id - 1] = location;
+      locations[index] = location;
 
       currentlyFavourite
         ? axios.delete(`/api/users/${user_id}/favourites/${id}`)
@@ -153,7 +155,7 @@ const App = () => {
     .then(response => {
       
       // remove the marker with the form
-      const markers = [ ...state.markers ];
+      const markers = [ ...state.markers ]
       markers.splice(id, 1);
 
       // get the new location data from the response + add it to locations
@@ -165,7 +167,7 @@ const App = () => {
       locations.push(location)
       
       setState({ ...state, markers, locations });
-      
+
       // set the success snackbar
       addSnackbar('save');
       
