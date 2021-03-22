@@ -131,6 +131,8 @@ const App = () => {
   // Validate the form input, save to db if sound
   const saveMarker = (id, title, description, image, activity, position) => {
 
+    console.log(id)
+
     if (title === "") {
       addSnackbar('noTitle');
       return;
@@ -155,7 +157,13 @@ const App = () => {
       
       // remove the marker with the form
       const markers = [ ...state.markers ]
+
+      console.log(markers)
+      console.log(id)
+
       markers.splice(id, 1);
+
+      console.log(markers)
 
       // get the new location data from the response + add it to locations
       const location = response.data;

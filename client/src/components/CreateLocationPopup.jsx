@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
 export default function LocationPopup(props) {
 
   const { position, saveMarker, id } = props;
+  console.log('prop', id)
   const classes = useStyles();
 
   const [title, setTitle] = useState("");
