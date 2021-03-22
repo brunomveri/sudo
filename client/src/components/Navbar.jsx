@@ -1,35 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme, fade } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import Avatar from '@material-ui/core/Avatar';
 import IconAvatars from './IconAvatars';
-import { green, pink } from '@material-ui/core/colors';
+import { pink } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DarkSwitch from './DarkModeSwitch';
 import LogoutButton from './LogoutButton'
-import MyPins from '@material-ui/icons/PersonPinCircleOutlined';
-import ProfileAvatar from './ProfileAvatar';
-import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import TemporaryDrawer from './TemporaryDrawer';
 
 const drawerWidth = 240;
@@ -156,8 +137,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-export default function PersistentDrawerLeft(props) {
+export default function Navbar(props) {
 
   const {
     favouritesOnly,
@@ -170,40 +150,16 @@ export default function PersistentDrawerLeft(props) {
 
   const classes = useStyles();
 
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const [sidebar, setSidebar] = useState(true);
-  const showSidebar = () => setSidebar(!sidebar)
-
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          [classes.appBarShift]: false,
         })}
       >
         <Toolbar>
-          {/* <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            // onClick={handleDrawerOpen}
-            onClick={showSidebar}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <TemporaryDrawer />
           <img src={require("../images/logo_transparent_v3.png")} className="sudoLogo" height="40px" width="40px" alt="Sudo"></img>
           <Typography variant="h6">
@@ -229,35 +185,6 @@ export default function PersistentDrawerLeft(props) {
           <LogoutButton />
         </Toolbar>
       </AppBar>
-        {/* <nav className={sidebar && 'nav-menu'} fullWidth>
-          <div className="loginContainer">
-            <ProfileAvatar />
-            <Typography variant="h6">
-            <h5 className="LoggedInUser">John Smith</h5>
-            </Typography>
-            <List>
-          <Divider />
-          <ListItem button key={"Location: Vancouver"}>
-            <ListItemIcon><PersonPinCircleOutlinedIcon /></ListItemIcon>
-            <Typography variant="h6">
-              <p className={classes.test}>Vancouver</p>
-            </Typography>
-          </ListItem>
-          <Divider />
-          <ListItem button key={"Settings"}>
-            <ListItemIcon><SettingsOutlinedIcon /></ListItemIcon>
-            <p className={classes.test}>Settings</p>
-          </ListItem>
-          <Divider />
-          <ListItem button key={"My Cities"}>
-            <ListItemIcon><SettingsOutlinedIcon /></ListItemIcon>
-            <p className={classes.test}>My Cities</p>
-          </ListItem>
-        </List>
-        <Divider />
-          </div>
-        </nav> */}
-        
     </div>
   );
 }

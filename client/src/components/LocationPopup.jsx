@@ -13,7 +13,6 @@ import {
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import DirectionsIcon from '@material-ui/icons/Directions';
-import DeleteIcon from '@material-ui/icons/Delete';
 import AlertDialog from './AlertDialog';
 
 const useStyles = makeStyles({
