@@ -1,4 +1,6 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -9,8 +11,19 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
 
+const useStyles = makeStyles({
+  title: {
+    '& > *': {
+      fontFamily: 'inherit'
+    }
+  }
+});
+
 export default function AlertDialog(props) {
+
+  const { deleteLocation, id } = props;
   const [open, setOpen] = React.useState(false);
+  const classes = useStyles(); 
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -25,16 +38,10 @@ export default function AlertDialog(props) {
     handleClose();
   };
 
-  const { deleteLocation, id } = props;
-  
   return (
     <div>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button> */}
       <IconButton
           aria-label="delete"
-          // onClick={() => deleteLocation(id)}
           onClick={handleClickOpen}
       >
         <DeleteIcon />
@@ -45,17 +52,14 @@ export default function AlertDialog(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this location?"}</DialogTitle>
-        <DialogContent>
-          {/* <DialogContentText id="alert-dialog-description">
-            TEST
-          </DialogContentText> */}
-        </DialogContent>
+        <DialogTitle id="alert-dialog-title" className={classes.title}>
+          Are you sure you want to delete this location?
+        </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={() => buttonFunctions(id)} color="primary" autoFocus>
+          <Button onClick={() => buttonFunctions(id)} color="secondary" autoFocus>
             Delete
           </Button>
         </DialogActions>

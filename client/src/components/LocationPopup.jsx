@@ -91,12 +91,6 @@ export default function LocationPopup(props) {
         >
           <DirectionsIcon />
         </IconButton>
-        {/* <IconButton
-          aria-label="delete"
-          onClick={() => deleteLocation(id)}
-        >
-          <DeleteIcon />
-        </IconButton> */}
         <AlertDialog
           deleteLocation={deleteLocation}
           id={id}  
