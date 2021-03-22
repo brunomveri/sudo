@@ -4,7 +4,7 @@ import axios from 'axios';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-import PersistentDrawerLeft from "./PersistentDrawerLeft";
+import Navbar from "./Navbar";
 import MapView from './MapView'
 
 const App = () => {
@@ -237,7 +237,7 @@ const App = () => {
 
     <div className="appContent">
       <div className="activityIcons">
-        <PersistentDrawerLeft 
+        <Navbar 
           favouritesOnly={state.favouritesOnly}
           toggleFavouritesOnly={toggleFavouritesOnly}
           darkMode={state.darkMode}

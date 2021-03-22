@@ -38,9 +38,9 @@ code {
 .activityIcons {
   background-color: #59606d;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   height: calc(100vh - 65px);
 }
 
