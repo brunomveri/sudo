@@ -6,7 +6,6 @@ import Alert from '@material-ui/lab/Alert';
 
 import PersistentDrawerLeft from "./PersistentDrawerLeft";
 import MapView from './MapView'
-import TemporaryDrawer from './TemporaryDrawer'
 
 const App = () => {
 

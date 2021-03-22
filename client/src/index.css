@@ -43,8 +43,9 @@ code {
   align-items: end;
   flex-direction: column;
   justify-content: start;
-  margin-top: 64px;
-  height: 100vh;
+  /* margin-top: 64px; */                                   
+  height: calc(100vh - 65px);
+
   /* find a better way to do this than margin-top */
 }
 
