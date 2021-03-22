@@ -8,18 +8,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from '@material-ui/core/Typography';
 import ProfileAvatar from './ProfileAvatar';
+
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
-import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
-
-import PermContactCalendarOutlinedIcon from '@material-ui/icons/PermContactCalendarOutlined';
-import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined';
 import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
 import EventAvailableOutlinedIcon from '@material-ui/icons/EventAvailableOutlined';
 import AccessibilityNewOutlinedIcon from '@material-ui/icons/AccessibilityNewOutlined';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import EmojiEventsOutlinedIcon from '@material-ui/icons/EmojiEventsOutlined';
 
 const useStyles = makeStyles({
