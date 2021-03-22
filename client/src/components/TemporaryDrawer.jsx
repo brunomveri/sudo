@@ -20,7 +20,8 @@ import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
 
 const useStyles = makeStyles({
   root: {
-    top: 65
+    top: 65,
+    cursor: "pointer"
   },
   list: {
     width: 250
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  
 });
 
 export default function TemporaryDrawer() {
@@ -82,7 +84,7 @@ export default function TemporaryDrawer() {
     <div className={classes.root}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-            <MenuOutlinedIcon onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
+            <MenuOutlinedIcon className="iconStyle" onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>

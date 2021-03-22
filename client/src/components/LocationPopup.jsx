@@ -14,6 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AlertDialog from './AlertDialog';
 
 const useStyles = makeStyles({
   root: {
@@ -90,12 +91,16 @@ export default function LocationPopup(props) {
         >
           <DirectionsIcon />
         </IconButton>
-        <IconButton
+        {/* <IconButton
           aria-label="delete"
-          onClick={() => deleteLocation(id)}  
+          onClick={() => deleteLocation(id)}
         >
           <DeleteIcon />
-        </IconButton>
+        </IconButton> */}
+        <AlertDialog
+          deleteLocation={deleteLocation}
+          id={id}  
+        />
       </CardActions>
     </Card>
   );
