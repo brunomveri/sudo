@@ -13,7 +13,8 @@
     "react-dom": "^16.8.6",
     "react-leaflet": "^2.1.4",
     "react-leaflet-search": "^2.0.1",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "dark-mode-toggle-animation": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,7 +32,5 @@
     "not op_mini all"
   ],
   "proxy": "http://localhost:3001",
-  "devDependencies": {
-    "dark-mode-toggle-animation": "^1.0.1"
-  }
+  "devDependencies": {}
 }
