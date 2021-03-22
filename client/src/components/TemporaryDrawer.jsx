@@ -60,7 +60,7 @@ export default function TemporaryDrawer() {
     >
        <ProfileAvatar className={classes.profileAvatar} />
             <Typography variant="h6">
-              <h5 className="LoggedInUser">John Smith</h5>
+              <h5 className="LoggedInUser">Steve Nash</h5>
             </Typography>
             <List>
           <Divider />
