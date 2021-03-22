@@ -87,3 +87,7 @@ code {
 .sudoLogo {
   margin-left: 20px;
 }
+
+.iconStyle {
+  cursor: 'pointer';
+}

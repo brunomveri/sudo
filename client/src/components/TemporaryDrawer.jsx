@@ -19,7 +19,8 @@ import EmojiEventsOutlinedIcon from '@material-ui/icons/EmojiEventsOutlined';
 
 const useStyles = makeStyles({
   root: {
-    top: 65
+    top: 65,
+    cursor: "pointer"
   },
   list: {
     width: 250,
@@ -101,7 +102,7 @@ export default function TemporaryDrawer() {
     <div className={classes.root}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-            <MenuOutlinedIcon onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
+          <MenuOutlinedIcon onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
           <Drawer
             anchor={anchor}
             BackdropProps={{ invisible: true }}
