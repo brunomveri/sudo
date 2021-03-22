@@ -2,21 +2,20 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Typography from '@material-ui/core/Typography';
 import ProfileAvatar from './ProfileAvatar';
+
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
-import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
-
+import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
+import EventAvailableOutlinedIcon from '@material-ui/icons/EventAvailableOutlined';
+import AccessibilityNewOutlinedIcon from '@material-ui/icons/AccessibilityNewOutlined';
+import EmojiEventsOutlinedIcon from '@material-ui/icons/EmojiEventsOutlined';
 
 const useStyles = makeStyles({
   root: {
@@ -24,12 +23,16 @@ const useStyles = makeStyles({
     cursor: "pointer"
   },
   list: {
-    width: 250
+    width: 250,
   },
   fullList: {
     width: 'auto',
   },
-  
+  porfileAvatar: {
+    marginTop: '10px',
+    width: '80px',
+    height: '80px'
+  }
 });
 
 export default function TemporaryDrawer() {
@@ -55,28 +58,43 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-       <ProfileAvatar className="profileAvatar" />
+       <ProfileAvatar className={classes.profileAvatar} />
             <Typography variant="h6">
               <h5 className="LoggedInUser">John Smith</h5>
             </Typography>
             <List>
           <Divider />
-          <ListItem button key={"Location: Vancouver"}>
+          <ListItem button key="location">
             <ListItemIcon><PersonPinCircleOutlinedIcon /></ListItemIcon>
               <p className={classes.test}>Vancouver</p>
           </ListItem>
           <Divider />
-          <ListItem button key={"Settings"}>
+          <ListItem button key="activities">
+            <ListItemIcon><AccessibilityNewOutlinedIcon /></ListItemIcon>
+            <p className={classes.test}>My Activities</p>
+          </ListItem>
+          <Divider />
+          <ListItem button key="friends">
+            <ListItemIcon><GroupOutlinedIcon /></ListItemIcon>
+            <p className={classes.test}>Friends</p>
+          </ListItem>
+          <Divider />
+          <ListItem button key="events">
+            <ListItemIcon><EventAvailableOutlinedIcon /></ListItemIcon>
+            <p className={classes.test}>Events</p>
+          </ListItem>
+          <Divider />
+          <ListItem button key="upgrade">
+            <ListItemIcon><EmojiEventsOutlinedIcon /></ListItemIcon>
+            <p className={classes.test}>Upgrade to Pro</p>
+          </ListItem>
+          <Divider />
+          <ListItem button key="settings">
             <ListItemIcon><SettingsOutlinedIcon /></ListItemIcon>
             <p className={classes.test}>Settings</p>
           </ListItem>
           <Divider />
-          <ListItem button key={"My Cities"}>
-            <ListItemIcon><LocationCityOutlinedIcon /></ListItemIcon>
-            <p className={classes.test}>My Cities</p>
-          </ListItem>
         </List>
-        <Divider />
     </div>
   );
 
@@ -84,12 +102,18 @@ export default function TemporaryDrawer() {
     <div className={classes.root}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-            <MenuOutlinedIcon className="iconStyle" onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+          <MenuOutlinedIcon onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
+          <Drawer
+            anchor={anchor}
+            BackdropProps={{ invisible: true }}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
             {list(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
     </div>
   );
+  
 }

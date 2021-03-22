@@ -18,9 +18,7 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-right: 30px;
-
 }
 
 .nav-menu {
@@ -43,24 +41,12 @@ code {
   align-items: end;
   flex-direction: column;
   justify-content: start;
-  /* margin-top: 64px; */                                   
   height: calc(100vh - 65px);
-
-  /* find a better way to do this than margin-top */
-}
-
-
-.makeStyles-root-22 {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
 }
 
 .sunMoonSwitch {
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
 }
 
 .newMarkerButton {
@@ -75,7 +61,6 @@ code {
 .LoggedInUser {
   display: flex;
   justify-content: center;
-
 }
 
 .loginContainer {

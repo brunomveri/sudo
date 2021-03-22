@@ -60,7 +60,7 @@ export default function LocationPopup(props) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={image ? image : require('../images/placeholder.png')}
+        image={image ? image : require('../images/location_placeholder.png')}
         title={title}
       />
       <CardContent>

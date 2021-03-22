@@ -13,6 +13,9 @@ import Hiking from '@material-ui/icons/FilterHdrOutlined';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
     '& > *': {
       margin: theme.spacing(1),
     },
