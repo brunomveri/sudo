@@ -2,14 +2,10 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Typography from '@material-ui/core/Typography';
 import ProfileAvatar from './ProfileAvatar';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
@@ -23,7 +19,10 @@ const useStyles = makeStyles({
     top: 65
   },
   list: {
-    width: 250
+    width: 250,
+    '& > .MuiBackdrop-root': {
+      display: 'none'
+    }
   },
   fullList: {
     width: 'auto',
@@ -83,11 +82,17 @@ export default function TemporaryDrawer() {
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
             <MenuOutlinedIcon onClick={state.left === false ? toggleDrawer(anchor, true) : toggleDrawer(anchor, false)}/>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+          <Drawer
+            anchor={anchor}
+            BackdropProps={{ invisible: true }}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
             {list(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
     </div>
   );
+  
 }
