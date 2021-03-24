@@ -1,7 +1,7 @@
 {
   "name": "sudo",
   "version": "1.0.0",
-  "description": "A boilerplate project for anyone interested in making a project that uses React and Rails.",
+  "description": "Community-driven platform to find the best outdoor fitness and sports areas in your city.",
   "main": "index.js",
   "directories": {
     "lib": "lib",
